@@ -1,5 +1,5 @@
-import Title from './Text/Title.component'
+import Text from './Text/Text.component'
 
 export {
-  Title
-}
+  Text
+};
