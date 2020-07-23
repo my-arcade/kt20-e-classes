@@ -1,0 +1,11 @@
+{
+  "name": "app-ui",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@types/react": "^16.9.41",
+    "react": "^16.13.1"
+  }
+}

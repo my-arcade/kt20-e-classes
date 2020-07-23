@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": ["app-ui", "knolyx-storybook", "knolyx-frontend"],
+    "no-hoist": ["**/react-native", "**/react-native/**"]
+  },
+  "scripts": {
+    "*": "echo 'It seems your running dev from the room folder, enter your respective folder (frontend / mobile) or use the yarn workspace command'"
+  }
+}
