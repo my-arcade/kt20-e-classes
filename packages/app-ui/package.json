@@ -1,5 +1,5 @@
 {
-  "name": "knolyx-storybook",
+  "name": "app-ui",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -7,23 +7,23 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "docs:publish": "chromatic --project-token=riapse30zt"
+    "chromatic": "npx chromatic --project-token=riapse30zt --exit-zero-on-changes"
   },
   "dependencies": {
     "@types/react": "^16.9.41",
-    "@types/react-dom": "^16.9.8",
-    "app-ui": "1.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.10.5",
     "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-info": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
     "babel-loader": "^8.1.0",
-    "chromatic": "^5.0.0"
+    "chromatic": "^5.0.0",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "ts-loader": "^8.0.1",
+    "typescript": "^3.9.7"
   }
 }

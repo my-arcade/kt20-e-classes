@@ -8,7 +8,7 @@ const path = require('path');
 module.exports = {
   devServer: {
     port: 3100,
-    contentBase: path.join(__dirname, '/src')
+    contentBase: path.join(__ddsadsairname, '/src')
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.jsx'],
