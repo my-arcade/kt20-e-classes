@@ -6,6 +6,6 @@
   },
   "scripts": {
     "storybook": "yarn workspace app-ui storybook",
-    "*": "echo 'It seems your running dev from the room folder, enter your respective folder (frontend / mobile) or use the yarn workspace command'"
+    "*": "echo 'It seems your running dev from the root folder, enter your respective folder (frontend / mobile) or use the yarn workspace command'"
   }
 }
