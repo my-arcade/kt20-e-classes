@@ -31,17 +31,18 @@ const Login = types
       self.user = yield self.user.getCurrent();
     }),
 
-    checkAuthentication: flow(function * () {
+    provisionAuthentication: flow(function * () {
       const { userApi } = getEnv(self)
       try {
-        yield userApi.checkAuthentication()
+        yield userApi.provisionAuthentication()
         self.authenticated = true
         self.user = yield self.user.getCurrent();
       } catch(err) {
         self.authenticated = false
+        if(!err.response || err.response.status !== 401) {
+          throw new Error(err);
+        }
       }
-
-      return self.authenticated
     })
   }))
 
