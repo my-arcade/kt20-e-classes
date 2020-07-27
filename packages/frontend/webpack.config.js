@@ -1,19 +1,18 @@
 'use strict';
 
-// vezi aci
-// https://github.com/TypeStrong/ts-loader/blob/master/examples/react-babel-karma-gulp/webpack.config.prod.js
+
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
   devServer: {
     port: 3100,
-    contentBase: path.join(__ddsadsairname, '/src')
+    contentBase: path.join(__dirname, '/src')
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.jsx'],
     alias: {
-      // empty for now
+      '@models': path.join(__dirname, './../models')
     }
   },
   cache: true,
