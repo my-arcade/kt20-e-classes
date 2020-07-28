@@ -1,0 +1,25 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+import theme from '.';
+
+<Meta title="Design System/Typography" />
+
+# Typography
+
+**Font:** Nunito Sans
+
+**Weights:** 200(extralight), 300(light), 400(regular), 700(bold), 800(extrabold), 900(black)
+
+<Typeset
+  fontSizes={[
+    Number(theme.typography.size.s1),
+    Number(theme.typography.size.s2),
+    Number(theme.typography.size.s3),
+    Number(theme.typography.size.m1),
+    Number(theme.typography.size.m2),
+    Number(theme.typography.size.m3),
+    Number(theme.typography.size.l1),
+    Number(theme.typography.size.l2),
+    Number(theme.typography.size.l3),
+  ]}
+  fontWeight={theme.typography.weight.black}
+/>

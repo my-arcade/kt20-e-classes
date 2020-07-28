@@ -1,0 +1,30 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import theme  from '.';
+
+<Meta title="Design System/Colors" />
+
+# Colors
+
+<ColorPalette>
+  <ColorItem title="theme.colors.primary" subtitle="Lightning Yellow" colors={[theme.colors.primary]} />
+  <ColorItem title="theme.colors.metaPrimary" subtitle="Buttery White" colors={[theme.colors.metaPrimary]} />
+  <ColorItem title="theme.colors.background" subtitle="White Lilac" colors={[theme.colors.background]} />
+  <ColorItem title="theme.colors.danger" subtitle="Bittersweet" colors={[theme.colors.danger]} />
+  <ColorItem title="theme.colors.text" subtitle="Rhino" colors={[theme.colors.text]} />
+  <ColorItem title="theme.colors.metaText" subtitle="Rhino shade" colors={[theme.colors.metaText]} />
+  <ColorItem title="theme.colors.clearBackground" subtitle="White" colors={[theme.colors.clearBackground]} />
+  <ColorItem
+    title="Monochrome"
+    colors={[
+      theme.colors.darkest,
+      theme.colors.darker,
+      theme.colors.dark,
+      theme.colors.mediumdark,
+      theme.colors.medium,
+      theme.colors.mediumlight,
+      theme.colors.light,
+      theme.colors.lighter,
+      theme.colors.lightest,
+    ]}
+  />
+</ColorPalette>
