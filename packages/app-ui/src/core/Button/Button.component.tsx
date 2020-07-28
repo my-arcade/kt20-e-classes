@@ -1,5 +1,4 @@
 import React, { MouseEvent } from "react";
-// import PropTypes from 'prop-types';
 import styled, { DefaultTheme } from "styled-components";
 
 // not finished
