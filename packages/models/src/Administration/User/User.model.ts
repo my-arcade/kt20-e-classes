@@ -47,8 +47,10 @@ const Login = types
   }))
 
 interface UserModelType extends Instance<typeof User> {}
+interface LoginModelType extends Instance<typeof Login> {}
 
 export {
   Login,
+  LoginModelType,
   UserModelType
 }

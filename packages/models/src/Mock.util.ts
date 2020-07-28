@@ -1,8 +1,8 @@
-function success(mock : Object, data : Object) : void {
+function success(mock : jest.Mocked<any>, data? : Object) : void {
   mock.mockImplementationOnce(() => Promise.resolve({ data: (data ? data : {}) }))
 }
 
-function error(mock : Object, data : Object, status : number) : void {
+function error(mock : jest.Mocked<any>, data? : Object, status? : number) : void {
   const error = ({
     response: {
       data: (data ? data : {}),

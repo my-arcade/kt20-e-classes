@@ -1,10 +1,10 @@
-import { Login } from './../User.model'
+import { Login, LoginModelType } from './../User.model'
 import { success, error } from './../../../Mock.util'
 import userApi from './../User.api'
 
 jest.mock('./../User.api');
 
-let loginStore = null;
+let loginStore : LoginModelType = null;
 describe('Test user/login model', () => {
   beforeAll(() => {
     loginStore = Login.create({ authenticated: false }, { userApi })
