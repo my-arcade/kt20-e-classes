@@ -1,21 +1,19 @@
 import React, { MouseEvent } from "react";
 import styled, { DefaultTheme } from "styled-components";
 
-// not finished
-
-export interface ButtonProps {
-  readonly danger: boolean;
-  readonly disabled: boolean;
+interface ButtonProps {
+  readonly danger?: boolean;
+  readonly disabled?: boolean;
   readonly onClick: (event: MouseEvent<HTMLElement>) => void;
   readonly size: string;
   readonly theme: DefaultTheme;
-  readonly isLoading: boolean;
-  readonly containsIcon: boolean;
+  readonly isLoading?: boolean;
+  readonly containsIcon?: boolean;
   readonly appearance: string;
-  readonly isLink: boolean;
-  readonly ButtonWrapper: any;
-  readonly children: React.ReactNode;
-  readonly loadingText: string;
+  readonly isLink?: boolean;
+  readonly ButtonWrapper?: any;
+  readonly children?: React.ReactNode;
+  readonly loadingText?: string;
 }
 
 const Text = styled.span`

@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
-import React, { FunctionComponent, ComponentProps } from "react";
+import React, { ComponentProps } from "react";
 import styled, { css } from "styled-components";
-import { colors, typography } from "../shared/styles";
+import { colors, typography } from "../theme/styles";
 import { Icon } from "../Icon/Icon.component";
+import getInitials from '../utils/getIntials.utils';
 
-export interface AvatarProps {
+interface AvatarProps {
   isLoading: boolean;
   username: string;
   src: string;
@@ -107,7 +107,7 @@ const Initial = styled.div<Partial<AvatarProps>>`
 /**
  * The `Avatar` component is where we put all avatars.
  */
-export const Avatar: FunctionComponent<AvatarProps> = ({
+export const Avatar = ({
   isLoading = false,
   username = "loading",
   src = "",
@@ -126,7 +126,7 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
     a11yProps["aria-label"] = username;
     avatarFigure = (
       <Initial size={size} aria-hidden="true">
-        {username.substring(0, 1)}
+        {getInitials(username)}
       </Initial>
     );
   }
@@ -143,3 +143,5 @@ export const Avatar: FunctionComponent<AvatarProps> = ({
     </Image>
   );
 };
+
+export default Avatar;
