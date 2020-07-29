@@ -2,7 +2,7 @@ import React from "react";
 // import { action } from '@storybook/addon-actions';
 
 import { Button } from "./Button.component";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../Icon/Icon.component";
 
 export default {
   title: "Design System/Button",
