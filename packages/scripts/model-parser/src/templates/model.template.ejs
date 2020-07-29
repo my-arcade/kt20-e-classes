@@ -1,0 +1,37 @@
+import { types, Instance, flow, getEnv } from 'mobx-state-tree'
+
+const <%=name%> = types
+  .model('<%=name%>', {
+<%=properties%>
+  })
+  .actions(self => ({
+    getOne: flow(function * () {
+      const { <%=name.toLowerCase()%>Api } = getEnv(self)
+      const { data } = yield <%=name.toLowerCase()%>Api.getOne();
+      
+      return data;
+    })
+  }))
+
+const <%=name%>Store = types
+  .model('<%=name%>Store', {
+    <%=name.toLowerCase()%>: types.reference,
+    <%=name.toLowerCase()%>s: types.array(<%=name%>)
+  })
+
+  .actions(self => ({
+    getOne: flow(function * (payload : {id: number}) {
+      const { <%=name.toLowerCase()%>Api } = getEnv(self)
+      yield <%=name.toLowerCase()%>Api.getOne(id)
+    })
+  }))
+
+interface <%=name%>ModelType extends Instance<typeof <%=name%>> {}
+interface <%=name%>StoreModelType extends Instance<typeof <%=name%>Store> {}
+
+export {
+  <%=name%>,
+  <%=name%>ModelType,
+  <%=name%>Store,
+  <%=name%>StoreModelType
+}

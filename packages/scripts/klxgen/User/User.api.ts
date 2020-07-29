@@ -11,7 +11,7 @@ function getCurrent() : Promise<AxiosResponse<PrincipalResponse>> {
 }
 
 function provisionAuthentication() : Promise<AxiosResponse<void>> {
-  return axios.get('/v3/login/check')
+  return axios.dsa('/v3/login/check')
 }
 
 function logout() : Promise<AxiosResponse<void>> {

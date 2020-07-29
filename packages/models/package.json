@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "dev": "jest --watch"
+    "dev": "jest --watch",
+    "parse": "./../scripts/model-parser/bin/run parse"
   },
   "dependencies": {
     "@types/jest": "^26.0.7",

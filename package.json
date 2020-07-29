@@ -2,10 +2,10 @@
   "private": true,
   "workspaces": {
     "packages": ["packages/**"],
-    "no-hoist": ["**/react-native", "**/react-native/**"]
+    "no-hoist": ["**/react-native", "**/react-native/**", "**/scripts/**"]
   },
   "scripts": {
     "storybook": "yarn workspace app-ui storybook",
     "*": "echo 'It seems your running dev from the room folder, enter your respective folder (frontend / mobile) or use the yarn workspace command'"
-  }
+  } 
 }

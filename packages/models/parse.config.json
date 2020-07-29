@@ -1,0 +1,8 @@
+{
+  "globals": [
+    "NamedEntityDTO"
+  ],
+  "generics": [
+    {"name": "PagedResponseDTO", "import": "./no-op"}
+  ]
+}

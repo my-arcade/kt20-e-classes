@@ -1,0 +1,15 @@
+import { <%=name%>Store, <%=name%>StoreModelType } from './../<%=name%>.model'
+import { success, error } from './../../../Mock.util'
+import <%=name.toLowerCase()%>Api from './../<%=name%>.api'
+
+jest.mock('./../<%=name%>.api');
+
+let <%=name.toLowerCase()%>Store : <%=name%>StoreModelType = null;
+describe('Test <%=name%> model', () => {
+  beforeAll(() => {
+    <%=name.toLowerCase()%>Store = <%=name%>Store.create({ }, { <%=name.toLowerCase()%>Api })
+  })
+
+  it('should create the store successfully', () => {
+  })
+})
