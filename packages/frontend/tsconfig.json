@@ -20,7 +20,10 @@
       "skipLibCheck": true,
       "baseUrl": "./",
       "paths": {
-        "@models": ["./../models"]
+        "@models": ["./../models/src"],
+        "@ui": ["./../app-ui/src"],
+        "@modules": ["./src/modules"],
       }
-  }
+  },
+  "files": ["./../app-ui/src/core/theme/styled.d.ts"]
 }

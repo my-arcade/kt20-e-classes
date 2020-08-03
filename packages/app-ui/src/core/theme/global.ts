@@ -10,8 +10,6 @@ export const bodyStyles = css`
   overflow-y: auto;
   overflow-x: hidden;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-overflow-scrolling: touch;
@@ -68,8 +66,6 @@ export const bodyStyles = css`
   pre {
     font-family: ${typography.type.code};
     font-size: ${typography.size.s2 - 1}px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   code {
@@ -93,10 +89,19 @@ export const bodyStyles = css`
 
 // Allow access font to settings but control how and where to load the font.
 export const fontUrl =
-  "https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,800,900&display=swap";
+  "https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap";
 
 export const GlobalStyle = createGlobalStyle`
+  @import url('${fontUrl}');
+  
+  
   body {
     ${bodyStyles}
+  }
+
+  html, body, #app {
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
   }
 `;

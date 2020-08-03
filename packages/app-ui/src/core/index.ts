@@ -1,5 +1,11 @@
+import theme from './theme'
 import Text from './Text/Text.component'
+import Box from './Box/Box.component'
+import Input from './InputBox/Input.component'
 
 export {
-  Text
+  Input,
+  Box,
+  Text,
+  theme
 };

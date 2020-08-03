@@ -1,12 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { colors, typography, spacing } from "../theme/styles";
-import { Icon } from "../Icon/Icon.component";
 
 interface InputProps {
   appearance: string;
   hideLabel: boolean;
-  icon?: string;
   orientation?: string;
   error?: string;
   focused?: boolean;
@@ -180,48 +178,6 @@ const InputWrapper = styled.div<Partial<InputProps>>`
   }
 
   ${(props) =>
-    props.icon &&
-    css`
-      > svg {
-        transition: all 150ms ease-out;
-        position: absolute;
-        top: 50%;
-        height: 1em;
-        width: 1em;
-        font-size: ${props.appearance === "pill" ? 0.75 : 1}em;
-        margin-top: -0.5em;
-        z-index: 1;
-
-        background: transparent;
-
-        path {
-          transition: all 150ms ease-out;
-          fill: ${colors.mediumdark};
-        }
-      }
-
-      ${InputText}:focus + svg path {
-        fill: ${colors.darker};
-      }
-
-      ${InputText} {
-        padding-left: 2.75em;
-
-        ${props.appearance === "pill" &&
-          css`
-            padding-left: 2.4em;
-          `};
-        ${props.appearance === "tertiary" &&
-          css`
-            padding-left: 1.75em;
-          `};
-      }
-      > svg {
-        left: ${props.appearance === "tertiary" ? 0 : 0.8}em;
-      }
-    `}
-
-  ${(props) =>
     props.error &&
     css`
     ${Error} {
@@ -303,7 +259,6 @@ export const Input = ({
   label = "Label",
   hideLabel = false,
   orientation = "vertical",
-  icon = "",
   error = "",
   appearance = "default",
   className = "",
@@ -331,11 +286,9 @@ export const Input = ({
       <InputWrapper
         error={errorMessage}
         data-error={error}
-        icon={icon}
         appearance={appearance}
         focused={focused}
       >
-        {icon && <Icon icon={icon} aria-hidden />}
         <InputText
           id={id}
           value={value}

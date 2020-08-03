@@ -9,6 +9,7 @@ declare module 'styled-components' {
       background: string;
       text: string;
       metaText: string;
+      clearText: string;
       clearBackground: string;
 
        // Monochrome

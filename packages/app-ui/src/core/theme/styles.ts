@@ -21,6 +21,7 @@ export const colors = {
 
   text: '#2A3A5F',
   metaText: 'rgb(42, 58, 95, 0.5)',
+  clearText: '#FFFFFF',
 
   border: 'rgba(0,0,0,.1)',
 
@@ -69,7 +70,7 @@ export const spacing = {
 
 export const typography = {
   type: {
-    primary: '"Nunito Sans", "Mandali", Helvetica, Arial, sans-serif',
+    primary: 'Avenir, "Nunito", "Mandali", Helvetica, Arial, sans-serif',
     code: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
   },
   weight: {
