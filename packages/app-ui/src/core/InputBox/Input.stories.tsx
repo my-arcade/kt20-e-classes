@@ -1,5 +1,6 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
+import { withKnobs } from '@storybook/addon-knobs'
 
 import { Input } from "./Input.component";
 
@@ -8,6 +9,7 @@ const onChange = action("change");
 export default {
   title: "Design System/forms/Input",
   component: Input,
+  decorators: [withKnobs],
 };
 const initialArgs = {
   label: "label",
