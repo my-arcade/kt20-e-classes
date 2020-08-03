@@ -1,14 +1,14 @@
-/* eslint-disable react/prop-types */
-import React, { FunctionComponent, ComponentProps } from "react";
+import React, { ComponentProps } from "react";
 import styled, { css } from "styled-components";
-import { colors, typography } from "../shared/styles";
-import { Icon } from "../Icon/Icon";
+import { colors, typography } from "../theme/styles";
+import { Icon } from "../Icon/Icon.component";
+import getInitials from '../utils/getIntials.utils';
 
-export interface IProps {
-  isLoading: boolean;
-  username: string;
-  src: string;
-  size: keyof typeof sizes;
+interface AvatarProps {
+  isLoading?: boolean;
+  username?: string;
+  src?: string;
+  size?: keyof typeof sizes;
 }
 
 export const sizes = {
@@ -18,7 +18,7 @@ export const sizes = {
   tiny: 16,
 };
 
-const Image = styled.div<Partial<IProps>>`
+const Image = styled.div<Partial<AvatarProps>>`
   background: ${(props) => (!props.isLoading ? "transparent" : colors.light)};
   border-radius: 50%;
   display: inline-block;
@@ -75,7 +75,7 @@ const Image = styled.div<Partial<IProps>>`
   }
 `;
 
-const Initial = styled.div<Partial<IProps>>`
+const Initial = styled.div<Partial<AvatarProps>>`
   color: ${colors.lightest};
   text-align: center;
 
@@ -107,13 +107,13 @@ const Initial = styled.div<Partial<IProps>>`
 /**
  * The `Avatar` component is where we put all avatars.
  */
-export const Avatar: FunctionComponent<IProps> = ({
+export const Avatar = ({
   isLoading = false,
   username = "loading",
   src = "",
   size = "medium",
   ...props
-}: IProps) => {
+}: AvatarProps) => {
   let avatarFigure = <Icon icon="useralt" />;
   const a11yProps: ComponentProps<typeof Image> = {};
 
@@ -126,7 +126,7 @@ export const Avatar: FunctionComponent<IProps> = ({
     a11yProps["aria-label"] = username;
     avatarFigure = (
       <Initial size={size} aria-hidden="true">
-        {username.substring(0, 1)}
+        {getInitials(username)}
       </Initial>
     );
   }
@@ -143,3 +143,5 @@ export const Avatar: FunctionComponent<IProps> = ({
     </Image>
   );
 };
+
+export default Avatar;

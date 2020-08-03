@@ -1,15 +1,19 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
 
-import { Icon } from './Icon';
-import { icons } from '../shared/icons';
+import Icon  from "./Icon.component";
+import { icons } from "../theme/icons";
+
+interface ItemProps {
+  minimal?: boolean;
+}
 
 const Meta = styled.div`
   color: #666;
   font-size: 12px;
 `;
 
-const Item = styled.li`
+const Item = styled.li<ItemProps>`
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -49,11 +53,11 @@ const List = styled.ul`
 `;
 
 export default {
-  title: 'Design System/Icon',
+  title: "Design System/Icon",
   component: Icon,
 };
 
-export const Basic = (args: any) => <Icon icon='users' {...args} />;
+export const Basic = (args: any) => <Icon icon="users" {...args} />;
 
 export const Labels = () => (
   <>
@@ -81,7 +85,8 @@ export const NoLabels = () => (
 
 export const Inline = () => (
   <>
-    this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon (default)
+    this is an inline <Icon icon="facehappy" aria-label="Happy face" /> icon
+    (default)
   </>
 );
 

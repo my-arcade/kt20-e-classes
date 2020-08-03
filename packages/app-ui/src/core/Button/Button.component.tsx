@@ -1,20 +1,19 @@
 import React, { MouseEvent } from "react";
 import styled, { DefaultTheme } from "styled-components";
 
-// not finished
-
-export interface ButtonProps {
-  readonly danger: boolean;
-  readonly disabled: boolean;
-  readonly onClick: (event: MouseEvent<HTMLElement>) => void;
-  readonly size: string;
+interface ButtonProps {
+  readonly danger?: boolean;
+  readonly disabled?: boolean;
+  readonly onClick?: (event: MouseEvent<HTMLElement>) => void;
+  readonly size?: string;
   readonly theme: DefaultTheme;
-  readonly isLoading: boolean;
-  readonly containsIcon: boolean;
-  readonly isUnclickable: boolean;
-  readonly appearance: string;
-  readonly isLink: boolean;
-  readonly ButtonWrapper: any;
+  readonly isLoading?: boolean;
+  readonly containsIcon?: boolean;
+  readonly appearance?: string;
+  readonly isLink?: boolean;
+  readonly ButtonWrapper?: any;
+  readonly children?: React.ReactNode;
+  readonly loadingText?: string;
 }
 
 const Text = styled.span`
@@ -128,7 +127,7 @@ const ButtonStyled = styled.button<ButtonProps>`
     `}
 
   ${(props: ButtonProps) =>
-    props.isUnclickable &&
+    props.disabled &&
     `
       cursor: default !important;
       pointer-events: none;
@@ -343,7 +342,7 @@ const ButtonComponentPicker = ({
   isLoading = false,
   isLink = false,
   appearance = APPEARANCES.TERTIARY,
-  isUnclickable = false,
+  disabled = false,
   containsIcon = false,
   size = SIZES.REGULAR,
   ButtonWrapper = undefined,
@@ -355,15 +354,15 @@ const ButtonComponentPicker = ({
 
 export const Button = ({
   children,
-  isDisabled,
+  disabled,
   isLoading,
   loadingText,
   ...rest
-}: any) => {
+}: ButtonProps) => {
   return (
     <ButtonStyled
       as={ButtonComponentPicker}
-      disabled={isDisabled}
+      disabled={disabled}
       isLoading={isLoading}
       {...rest}
     >
