@@ -10,7 +10,7 @@ export default {
 };
 
 export const Basic = (args: any) => (
-  <Button children="Label" {...args} />
+  <Button {...args}>Label</Button>
 );
 
 export const All = () => (

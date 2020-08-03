@@ -4,12 +4,12 @@ import styled, { DefaultTheme } from "styled-components";
 interface ButtonProps {
   readonly danger?: boolean;
   readonly disabled?: boolean;
-  readonly onClick: (event: MouseEvent<HTMLElement>) => void;
-  readonly size: string;
+  readonly onClick?: (event: MouseEvent<HTMLElement>) => void;
+  readonly size?: string;
   readonly theme: DefaultTheme;
   readonly isLoading?: boolean;
   readonly containsIcon?: boolean;
-  readonly appearance: string;
+  readonly appearance?: string;
   readonly isLink?: boolean;
   readonly ButtonWrapper?: any;
   readonly children?: React.ReactNode;

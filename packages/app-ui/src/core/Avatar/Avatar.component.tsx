@@ -5,10 +5,10 @@ import { Icon } from "../Icon/Icon.component";
 import getInitials from '../utils/getIntials.utils';
 
 interface AvatarProps {
-  isLoading: boolean;
-  username: string;
-  src: string;
-  size: keyof typeof sizes;
+  isLoading?: boolean;
+  username?: string;
+  src?: string;
+  size?: keyof typeof sizes;
 }
 
 export const sizes = {
