@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Secured from './Secured.component';
 import Header from './Header.component';
-import Sidebar from './Sidebar.component';
+import { Sidebar, SidebarContext } from '@ui/core';
 
 // App routers
 import AuthenticationRouter from '@modules/Authentication/Authentication.router'
@@ -32,21 +32,28 @@ const Home : FC<{}> = () => {
 }
 
 const Navigator : FC<{}> = () => {
+  const [noOfSidebars, setNumberOfSidebars] = useState(0)
+
+  const increaseNoOfSidebars = () => setNumberOfSidebars(prevNoOfSidebars => prevNoOfSidebars + 1);
+  const decreaseNoOfSidebars = () => setNumberOfSidebars(prevNoOfSidebars => prevNoOfSidebars - 1);
+
   return (
     <Routes>
-      <Route path="/login" element={<AuthenticationRouter />} />
+      <Route path="login/*" element={<AuthenticationRouter />} />
       <Secured>
         <Header />
-        <Container>
-          <Sidebar items={sidebarItems} />
-          <Screen>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="administration/*" element={<AdministrationRouter />} />
-              <Route path="*" element={<div>Not found </div>} />
-            </Routes>
-          </Screen>
-        </Container>
+        <SidebarContext.Provider value={{noOfSidebars, increaseNoOfSidebars, decreaseNoOfSidebars}}>
+          <Container>
+            <Sidebar primary items={sidebarItems} />
+            <Screen>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="administration/*" element={<AdministrationRouter />} />
+                <Route path="*" element={<div>Not found </div>} />
+              </Routes>
+            </Screen>
+          </Container>
+        </SidebarContext.Provider>
       </Secured>
   </Routes>
   )

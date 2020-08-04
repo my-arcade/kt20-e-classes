@@ -6,7 +6,8 @@ const Container = styled.div`
   height: 60px;
   background-color: ${({ theme }) => theme.colors.background};
   box-shadow: 0 3px 3px rgba(0,0,0,0.1);
-
+  border-bottom-color: ${({ theme }) => theme.colors.clearBackground};
+  border-bottom-width: 1px;
   display: flex;
 `
 

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components';
 import { Text } from '@ui/core';
 import { useNavigate } from 'react-router-dom';
+import SidebarContext from './SidebarContext.component';
 
 interface SidebarItemType {
   name: string;
@@ -12,7 +13,7 @@ interface SidebarItemType {
 }
 
 interface SidebarProps {
-  collapsed?: boolean;
+  primary?: boolean;
   items: SidebarItemType[];
 }
 
@@ -32,7 +33,7 @@ const Items = styled.div`
   padding: 15px;
 `
 
-const Item = styled.div<{$active: boolean}>`
+const Item = styled.div<{$active?: boolean}>`
   cursor: pointer;
   padding: 16px;
   border-radius: 10px;
@@ -45,8 +46,18 @@ const MetaContainer = styled.div`
   margin-bottom: 30px;
 `
 
-const Sidebar : React.FC<SidebarProps> = ({collapsed, items} = {collapsed: false, items: []}) => {
+const Sidebar : React.FC<SidebarProps> = ({items, primary} = {items: [], primary: false}) => {
   const navigate = useNavigate();
+  const {noOfSidebars, decreaseNoOfSidebars, increaseNoOfSidebars} = useContext(SidebarContext);
+
+  useEffect(() => {
+    increaseNoOfSidebars()
+
+    return decreaseNoOfSidebars;
+  }, [])
+
+  const collapsed = primary && noOfSidebars > 1
+
   return (
     <Container>
       <Items>
