@@ -17,7 +17,7 @@ module.exports = {
     "src/**/*.ts",
     "src/**/*.tsx",
     "!src/**/*interfaces.d.ts",
-    "!src/**/*styled.d.ts",
+    "!src/**/theme/*",
     "!src/**/*stories.tsx",
   ],
   coverageThreshold: {

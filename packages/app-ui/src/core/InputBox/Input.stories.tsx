@@ -11,6 +11,7 @@ export default {
   component: Input,
   decorators: [withKnobs],
 };
+
 const initialArgs = {
   label: "label",
   value: "value",
@@ -181,54 +182,6 @@ export const Secondary = () => (
       value="With value"
       label="Label secondary"
       appearance="secondary"
-      onChange={onChange}
-    />
-  </form>
-);
-
-export const Tertiary = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
-    <Input
-      id="Placeholder"
-      label="Input with placeholder"
-      hideLabel
-      placeholder="Placeholder"
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="With-value"
-      value="With value"
-      label="Input with value"
-      hideLabel
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="Disabled"
-      value="Disabled"
-      label="Disabled input"
-      hideLabel
-      disabled
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="Icon"
-      value="Icon"
-      label="Input with icon"
-      hideLabel
-      icon="email"
-      appearance="tertiary"
-      onChange={onChange}
-    />
-    <Input
-      id="Error"
-      label="Input with error"
-      hideLabel
-      placeholder="Error"
-      error="There's an error with the input"
-      appearance="tertiary"
       onChange={onChange}
     />
   </form>
