@@ -6,13 +6,18 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
     "start": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lang:extract": "formatjs extract \"src/**/*.ts*\" --out-file src/lang/ro.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
+    "lang:compile": "formatjs compile src/lang/en.json --ast --out-file src/lang/compiled/en.json",
+    "lang:help": "formatjs extract --help"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@formatjs/cli": "^2.3.0",
+    "@formatjs/ts-transformer": "^2.5.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.1.0",
     "file-loader": "^6.0.0",
@@ -38,6 +43,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.1.0",
+    "react-intl": "^5.4.5",
     "react-router-dom": "^6.0.0-beta.0",
     "source-map-loader": "^1.0.1",
     "styled-components": "^5.1.1",

@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Dashboard from './Dashboard.screen';
 
 const DashboardRouter : FC<{}> = () => {
   return (
     <Routes>
-      <Route path="/" element={<div>Dashboard</div>} />
+      <Route path="/" element={<Dashboard />} />
     </Routes>
   )
 }

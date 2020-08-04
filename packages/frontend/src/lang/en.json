@@ -1,0 +1,18 @@
+{
+  "4Cl36J": {
+    "defaultMessage": "button",
+    "description": "wut?"
+  },
+  "CF06Tf": {
+    "defaultMessage": "Hmmm, what about {name}",
+    "description": "wut?"
+  },
+  "Fsi7zS": {
+    "defaultMessage": "button",
+    "description": "wut??"
+  },
+  "zSBaHE": {
+    "defaultMessage": "Today is {ts, date, ::yyyyMMdd}",
+    "description": "huh?"
+  }
+}

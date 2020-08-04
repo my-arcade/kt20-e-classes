@@ -1,8 +1,20 @@
 'use strict';
 
-
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const {transform} = require('@formatjs/ts-transformer');
 const path = require('path');
+
+const intlTransformer = () => {
+  return {
+    before: [
+      transform({
+        extractFromFormatMessageCall: true,
+        overrideIdFn: '[sha512:contenthash:base64:6]',
+      })
+    ]
+  }
+}
+
 module.exports = {
   devServer: {
     // tell webpack all our assets can be get relative to the base path (/)
@@ -44,7 +56,12 @@ module.exports = {
             loader: 'babel-loader'
           },
           {
-            loader: 'ts-loader'
+            loader: 'ts-loader',
+            options: {
+              getCustomTransformers() {
+                return intlTransformer()
+              }
+            }
           }
         ],
         exclude: /node_modules/,

@@ -7,3 +7,6 @@
 /**/.idea
 /**/.vscode
 **.log
+
+/frontend/src/lang/temp/**
+/frontend/src/lang/compiled/**

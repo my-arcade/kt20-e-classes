@@ -8,6 +8,7 @@ import { Sidebar, SidebarContext } from '@ui/core';
 // App routers
 import AuthenticationRouter from '@modules/Authentication/Authentication.router'
 import AdministrationRouter from '@modules/Administration/Administration.router'
+import DashboardRouter from '@modules/Dashboard/Dashboard.router'
 
 const Container = styled.div`
   display: flex;
@@ -27,9 +28,6 @@ const sidebarItems = [
   {key: 'communities', href: '/', name: 'Communities'}
 ]
 
-const Home : FC<{}> = () => {
-  return (<div>Dashboard</div>)
-}
 
 const Navigator : FC<{}> = () => {
   const [noOfSidebars, setNumberOfSidebars] = useState(0)
@@ -47,7 +45,7 @@ const Navigator : FC<{}> = () => {
             <Sidebar primary items={sidebarItems} />
             <Screen>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<DashboardRouter />} />
                 <Route path="administration/*" element={<AdministrationRouter />} />
                 <Route path="*" element={<div>Not found </div>} />
               </Routes>
