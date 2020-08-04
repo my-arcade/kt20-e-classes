@@ -6,14 +6,14 @@ export const background = {
   appInverse: '#7A8997',
   positive: '#FFC926',
   negative: '#FEDED2',
-  warning: '#FFF5CF',
+  warning: '#FFF9DE',
 };
 
 export const colors = {
   // Palette
   primary: '#FFC926',
-  secondary: '#1EA7FD',
-  tertiary: '#DDDDDD',
+  secondary: '#2A3A5F',
+  tertiary: '#919AAE',
 
   metaPrimary: '#FFFBEB',
   clearBackground: '#FFFFFF',
@@ -37,23 +37,10 @@ export const colors = {
 
 
   // Status
-  success: '#66BF3C',
+  success: '#58B606',
   danger: '#FF726C',
   warning: '#E69D00',
 };
-
-// TODO: check which colors from the old app can be used in the theme
-export const colorsx = {
-
-  // colors from old app - to be decided which ones to keep
-  yellow1: '#FFB500', // Selective Yellow
-  yellow2: '#FFC926', // Lightning Yellow
-  yellow3: '#FFCD05', // Supernova 
-  blue1: '#135AAA', // Tory blue
-  blue2: '#53BAEC', // Picton Blue
-  blue3: '#40c4ff', // Dodger blue
-  blue4: '#0071e6', // blue ribbon
-}
 
 export const spacing = {
   padding: {
