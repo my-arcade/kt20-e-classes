@@ -50,7 +50,7 @@ const ButtonStyled = styled.button<ButtonProps>`
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  padding: ${(props: ButtonProps) =>
+  padding: ${(props) =>
     props.size === SIZES.SMALL ? "8px 16px" : "13px 20px"};
   position: relative;
   text-align: center;
@@ -62,15 +62,15 @@ const ButtonStyled = styled.button<ButtonProps>`
   margin: 0;
   background: transparent;
 
-  font-size: ${(props: ButtonProps) =>
+  font-size: ${(props) =>
     props.size === SIZES.SMALL
       ? props.theme.typography.size.s1
       : props.theme.typography.size.s2}px;
-  font-weight: ${(props: ButtonProps) =>
+  font-weight: ${(props) =>
     props.theme.typography.weight.extrabold};
   line-height: 1;
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     !props.isLoading &&
     `
       &:hover {
@@ -100,23 +100,23 @@ const ButtonStyled = styled.button<ButtonProps>`
   }
 
   svg {
-    height: ${(props: ButtonProps) =>
+    height: ${(props) =>
       props.size === SIZES.SMALL ? "14" : "16"}px;
-    width: ${(props: ButtonProps) =>
+    width: ${(props) =>
       props.size === SIZES.SMALL ? "14" : "16"}px;
     vertical-align: top;
-    margin-right: ${(props: ButtonProps) =>
+    margin-right: ${(props) =>
       props.size === SIZES.SMALL ? "4" : "6"}px;
-    margin-top: ${(props: ButtonProps) =>
+    margin-top: ${(props) =>
       props.size === SIZES.SMALL ? "-1" : "-2"}px;
-    margin-bottom: ${(props: ButtonProps) =>
+    margin-bottom: ${(props) =>
       props.size === SIZES.SMALL ? "-1" : "-2"}px;
 
     /* Necessary for js mouse events to not glitch out when hovering on svgs */
     pointer-events: none;
   }
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.disabled &&
     `
       cursor: not-allowed !important;
@@ -126,7 +126,7 @@ const ButtonStyled = styled.button<ButtonProps>`
       }
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.disabled &&
     `
       cursor: default !important;
@@ -136,7 +136,7 @@ const ButtonStyled = styled.button<ButtonProps>`
       }
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.isLoading &&
     `
       cursor: progress !important;
@@ -157,7 +157,7 @@ const ButtonStyled = styled.button<ButtonProps>`
       }
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.containsIcon &&
     `
       svg {
@@ -167,7 +167,7 @@ const ButtonStyled = styled.button<ButtonProps>`
       padding: ${props.size === SIZES.SMALL ? "7" : "12"}px;
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.appearance === APPEARANCES.PRIMARY &&
     `
       background: ${props.theme.colors.primary};
@@ -190,7 +190,7 @@ const ButtonStyled = styled.button<ButtonProps>`
         `}
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.appearance === APPEARANCES.SECONDARY &&
     `
       background: ${props.theme.colors.secondary};
@@ -215,7 +215,7 @@ const ButtonStyled = styled.button<ButtonProps>`
         `}
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.appearance === APPEARANCES.TERTIARY &&
     `
       background: ${props.theme.colors.tertiary};
@@ -239,7 +239,7 @@ const ButtonStyled = styled.button<ButtonProps>`
         `}
     `}
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.appearance === APPEARANCES.OUTLINE &&
     `
       box-shadow: ${props.theme.colors.border} 0 0 0 1px inset;
@@ -280,7 +280,7 @@ const ButtonStyled = styled.button<ButtonProps>`
         `};
     `};
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.appearance === APPEARANCES.PRIMARY_OUTLINE &&
     `
       box-shadow: ${props.theme.colors.primary} 0 0 0 1px inset;
@@ -308,7 +308,7 @@ const ButtonStyled = styled.button<ButtonProps>`
       }
     `};
 
-  ${(props: ButtonProps) =>
+  ${(props) =>
     props.appearance === APPEARANCES.SECONDARY_OUTLINE &&
     `
       box-shadow: ${props.theme.colors.secondary} 0 0 0 1px inset;
