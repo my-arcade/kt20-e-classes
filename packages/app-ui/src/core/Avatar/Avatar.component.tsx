@@ -2,7 +2,7 @@ import React, { ComponentProps } from "react";
 import styled, { css } from "styled-components";
 import { colors, typography } from "../theme/styles";
 import { Icon } from "../Icon/Icon.component";
-import getInitials from '../utils/getIntials.utils';
+import getInitials from '../utils/getInitials.utils';
 
 interface AvatarProps {
   isLoading?: boolean;
