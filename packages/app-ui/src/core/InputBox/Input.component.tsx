@@ -1,4 +1,4 @@
-import React from "react";
+import React, {SyntheticEvent} from "react";
 import styled, { css } from "styled-components";
 import { colors, typography } from "../theme/styles";
 import { Icon } from "../Icon/Icon.component";
@@ -12,6 +12,9 @@ interface InputProps {
   error?: boolean;
   label?:string;
   id?:string;
+  placeholder?:string;
+  onChange?:(event:SyntheticEvent) => void;
+  disabled?: boolean;
 }
 
 const Label = styled.label<Partial<InputProps>>`
