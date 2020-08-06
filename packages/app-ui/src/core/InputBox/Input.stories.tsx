@@ -103,23 +103,6 @@ export const Default = () => (
       icon="email"
       onChange={onChange}
     />
-    <Input
-      id="Error"
-      label="Input with error"
-      hideLabel
-      placeholder="Error"
-      error="Error in the input"
-      onChange={onChange}
-    />
-    <Input
-      id="Error with icon"
-      label="Input with error and icon"
-      hideLabel
-      placeholder="Error with icon"
-      icon="email"
-      error="Error in the input"
-      onChange={onChange}
-    />
   </form>
 );
 
@@ -157,15 +140,6 @@ export const Secondary = () => (
       onChange={onChange}
     />
     <Input
-      id="Error"
-      label="Input with error"
-      hideLabel
-      placeholder="Error"
-      error="There's an error with the input"
-      appearance="secondary"
-      onChange={onChange}
-    />
-    <Input
       id="With-label"
       label="Label secondary"
       appearance="secondary"
@@ -196,23 +170,5 @@ export const Code = () => (
       onChange={onChange}
     />
     <Input id="Code" label="Code" hideLabel appearance="code" onChange={onChange} />
-    <Input
-      id="Code-with-error"
-      placeholder="Code"
-      label="Code"
-      hideLabel
-      appearance="code"
-      error="Does not compute lorem ipsum dolor sit amet consecatur "
-      onChange={onChange}
-    />
-    <Input
-      id="Code-with-error-and-label"
-      placeholder="Code"
-      appearance="code"
-      orientation="horizontal"
-      error="Does not compute lorem ipsum dolor sit amet consecatur "
-      onChange={onChange}
-      label="horizontal"
-    />
   </form>
 );
