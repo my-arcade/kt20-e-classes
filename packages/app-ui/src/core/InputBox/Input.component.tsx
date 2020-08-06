@@ -10,6 +10,8 @@ interface InputProps {
   orientation?: string;
   focused?: boolean;
   error?: boolean;
+  label?:string;
+  id?:string;
 }
 
 const Label = styled.label<Partial<InputProps>>`
@@ -225,17 +227,16 @@ const InputContainer = styled.div<Partial<InputProps>>`
     `}
 `;
 
-export const Input = ({
-  id = "",
-  value = "",
-  label = "Label",
-  hideLabel = false,
-  orientation = "vertical",
-  icon = "",
-  appearance = "primary",
-  focused = false,
-  ...props
-}) => {
+export const Input = (props: InputProps) => {
+  const {
+    id,
+    label,
+    hideLabel,
+    orientation,
+    icon,
+    appearance,
+    focused,
+  } = props;
   return (
     <InputContainer orientation={orientation}>
       <LabelWrapper hideLabel={hideLabel}>
@@ -246,10 +247,20 @@ export const Input = ({
 
       <InputWrapper icon={icon} appearance={appearance} focused={focused}>
         {icon && <Icon icon={icon} aria-hidden />}
-        <InputText id={id} value={value} {...props} />
+        <InputText id={id} {...props} />
       </InputWrapper>
     </InputContainer>
   );
+};
+
+Input.defaultProps = {
+  id: "",
+  label: "Label",
+  hideLabel: false,
+  orientation: "vertical",
+  icon: "",
+  appearance: "primary",
+  focused: false,
 };
 
 export default Input;
