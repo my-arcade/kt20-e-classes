@@ -1,6 +1,6 @@
 import { types, Instance } from 'mobx-state-tree'
-import { Login } from './Administration/User/User.model'
-import userApi from './Administration/User/User.api'
+import { Login } from './Administration/Authentication/Authentication.model'
+import authenticationApi from './Administration/Authentication/Authentication.api'
 
 const Store = types.model('Store', {
   loginStore: types.optional(Login, { authenticated: false })
@@ -8,7 +8,7 @@ const Store = types.model('Store', {
 
 const store : StoreModelType = Store.create({
 }, {
-  userApi
+  authenticationApi
 })
 
 interface StoreModelType extends Instance<typeof Store> {}

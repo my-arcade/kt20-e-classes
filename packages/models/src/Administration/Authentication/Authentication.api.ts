@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios'
-import { LoginResponse, PrincipalResponse } from './User.types'
+import { LoginResponse, PrincipalResponse } from './Authentication.types'
 
 
 function login(payload : {email: string, password: string}) : Promise<AxiosResponse<LoginResponse>> {

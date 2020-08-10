@@ -1,18 +1,24 @@
 import { types, Instance, flow, getEnv } from 'mobx-state-tree'
 
 
-const User = types
-  .model('User', {
+const AuthenticatedUser = types
+  .model('AuthenticatedUser', {
     id: types.optional(types.number, -1),
     name: types.optional(types.string, ''),
     email: types.optional(types.string, ''),
     currentOrganizationId: types.optional(types.number, -1)
   })
+  .views(self => ({
+    get api() {
+      const { authenticationApi } = getEnv(self)
+      return authenticationApi
+    }
+  }))
   .actions(self => ({
     getCurrent: flow(function * () {
-      const { userApi } = getEnv(self)
-      const { data } = yield userApi.getCurrent();
-      
+      const { api } = self
+      const { data } = yield api.getCurrent();
+
       return data;
     })
   }))
@@ -20,19 +26,24 @@ const User = types
 const Login = types
   .model('Login', {
     authenticated: types.boolean,
-    user: types.optional(User, {})
+    user: types.optional(AuthenticatedUser, {})
   })
-
+  .views(self => ({
+    get api() {
+      const { authenticationApi } = getEnv(self)
+      return authenticationApi
+    }
+  }))
   .actions(self => ({
     login: flow(function * (payload : {email: string}) {
-      const { userApi } = getEnv(self)
-      yield userApi.login(payload)
+      const { api } = self
+      yield api.login(payload)
       self.authenticated = true
       self.user = yield self.user.getCurrent();
     }),
 
     provisionAuthentication: flow(function * () {
-      const { userApi } = getEnv(self)
+      const { api: userApi } = self
       try {
         yield userApi.provisionAuthentication()
         self.authenticated = true
@@ -46,11 +57,11 @@ const Login = types
     })
   }))
 
-interface UserModelType extends Instance<typeof User> {}
+interface AuthenticatedUserModelType extends Instance<typeof AuthenticatedUser> {}
 interface LoginModelType extends Instance<typeof Login> {}
 
 export {
   Login,
   LoginModelType,
-  UserModelType
+  AuthenticatedUserModelType
 }

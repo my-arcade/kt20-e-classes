@@ -1,13 +1,13 @@
-import { Login, LoginModelType } from './../User.model'
-import { success, error } from './../../../Mock.util'
-import userApi from './../User.api'
+import { Login, LoginModelType } from '../Authentication.model'
+import { success, error } from '../../../Mock.util'
+import authenticationApi from '../Authentication.api'
 
-jest.mock('./../User.api');
+jest.mock('./../Authentication.api');
 
 let loginStore : LoginModelType = null;
 describe('Test user/login model', () => {
   beforeAll(() => {
-    loginStore = Login.create({ authenticated: false }, { userApi })
+    loginStore = Login.create({ authenticated: false }, { authenticationApi })
   })
 
   it('should create the store successfully', () => {
@@ -16,8 +16,8 @@ describe('Test user/login model', () => {
   
   it('should show user as authenticated', function * () {
     // prepare mock
-    success(userApi.provisionAuthentication)
-    success(userApi.getCurrent)
+    success(authenticationApi.provisionAuthentication)
+    success(authenticationApi.getCurrent)
 
     // test
     yield loginStore.provisionAuthentication()
@@ -26,7 +26,7 @@ describe('Test user/login model', () => {
   
   it('should not show user as authenticated', function * () {
     // mock
-    error(userApi.provisionAuthentication, {}, 401)
+    error(authenticationApi.provisionAuthentication, {}, 401)
     // test
     yield loginStore.provisionAuthentication()
     expect(loginStore.authenticated).toBe(false)
@@ -34,7 +34,7 @@ describe('Test user/login model', () => {
 
   it('should propagate error if status not 401', function * () {
     // mock
-    error(userApi.provisionAuthentication, {}, 500)  // simulate server error
+    error(authenticationApi.provisionAuthentication, {}, 500)  // simulate server error
     // test
     yield expect(loginStore.provisionAuthentication()).rejects.toThrow();
   })

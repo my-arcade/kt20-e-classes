@@ -1,7 +1,6 @@
 import React, {SyntheticEvent} from "react";
 import styled, { css } from "styled-components";
 import { colors, typography } from "../theme/styles";
-import { Icon } from "../Icon/Icon.component";
 
 interface InputProps {
   appearance: string;
@@ -236,7 +235,6 @@ export const Input = (props: InputProps) => {
     label,
     hideLabel,
     orientation,
-    icon,
     appearance,
     focused,
   } = props;
@@ -248,8 +246,7 @@ export const Input = (props: InputProps) => {
         </Label>
       </LabelWrapper>
 
-      <InputWrapper icon={icon} appearance={appearance} focused={focused}>
-        {icon && <Icon icon={icon} aria-hidden />}
+      <InputWrapper appearance={appearance} focused={focused}>
         <InputText id={id} {...props} />
       </InputWrapper>
     </InputContainer>
@@ -261,7 +258,6 @@ Input.defaultProps = {
   label: "Label",
   hideLabel: false,
   orientation: "vertical",
-  icon: "",
   appearance: "primary",
   focused: false,
 };

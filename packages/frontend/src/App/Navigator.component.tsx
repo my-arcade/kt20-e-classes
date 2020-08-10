@@ -5,6 +5,10 @@ import Secured from './Secured.component';
 import Header from './Header.component';
 import { Sidebar, SidebarContext } from '@ui/core';
 
+import { Dashboard as DashboardIcon } from '@styled-icons/boxicons-solid'
+import { Settings as SettingsIcon } from '@styled-icons/ionicons-solid'
+import { Book as BookIcon } from '@styled-icons/boxicons-solid'
+
 // App routers
 import AuthenticationRouter from '@modules/Authentication/Authentication.router'
 import AdministrationRouter from '@modules/Administration/Administration.router'
@@ -22,10 +26,26 @@ const Screen = styled.div`
 `
 
 const sidebarItems = [
-  {key: 'dashboard', name: 'Dashboard', href: '/'},
-  {key: 'library', name: 'Library', active: true},
-  {key: 'management', name: 'Management', href: '/administration'},
-  {key: 'communities', href: '/', name: 'Communities'}
+  {
+    key: 'dashboard',
+    name: 'Dashboard',
+    href: '/',
+    icon: <DashboardIcon size={18} />,
+    eq: (pathName: string, href: string) => pathName === href || pathName === '' || pathName == null
+  },
+  {
+    key: 'library',
+    name: 'Library',
+    href: '/library',
+    icon: <BookIcon size={18} />
+  },
+  {
+    key: 'management',
+    name: 'Management',
+    href: '/administration',
+    icon: <SettingsIcon size={18} />,
+    eq: (pathName: string, href: string) => pathName.indexOf(href) === 0
+  },
 ]
 
 

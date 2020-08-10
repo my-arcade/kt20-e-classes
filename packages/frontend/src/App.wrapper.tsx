@@ -10,7 +10,7 @@ import { GlobalStyle } from '@ui/core/theme/global';
 
 import Navigator from './App/Navigator.component';
 
-axios.defaults.baseURL = 'http://localhost:8081'
+axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.withCredentials = true
 
 const Container = styled.div`

@@ -11,6 +11,7 @@ declare module 'styled-components' {
       metaText: string;
       clearText: string;
       clearBackground: string;
+      dividerColor: string;
 
        // Monochrome
       lightest: string;

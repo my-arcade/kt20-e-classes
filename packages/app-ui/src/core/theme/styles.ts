@@ -23,6 +23,8 @@ export const colors = {
   metaText: 'rgb(42, 58, 95, 0.5)',
   clearText: '#FFFFFF',
 
+  dividerColor: 'rgb(239, 239, 239)',
+
   border: 'rgba(0,0,0,.1)',
 
   // Monochrome
