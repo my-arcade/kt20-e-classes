@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component should display the Button correctly 1`] = `
+<styled.button
+  as={[Function]}
+  theme={
+    Object {
+      "colors": Object {
+        "background": "#FAFBFD",
+        "border": "rgba(0,0,0,.1)",
+        "clearBackground": "#FFFFFF",
+        "danger": "#FF726C",
+        "dark": "#666666",
+        "darker": "#444444",
+        "darkest": "#333333",
+        "light": "#F3F3F3",
+        "lighter": "#F8F8F8",
+        "lightest": "#FFFFFF",
+        "medium": "#DDDDDD",
+        "mediumdark": "#999999",
+        "mediumlight": "#EEEEEE",
+        "metaPrimary": "#FFFBEB",
+        "metaText": "rgb(42, 58, 95, 0.5)",
+        "primary": "#FFC926",
+        "secondary": "#2A3A5F",
+        "success": "#58B606",
+        "tertiary": "#919AAE",
+        "text": "#2A3A5F",
+        "warning": "#E69D00",
+      },
+      "spacing": Object {
+        "borderRadius": Object {
+          "default": 10,
+          "small": 5,
+        },
+        "padding": Object {
+          "large": 30,
+          "medium": 20,
+          "small": 10,
+        },
+      },
+      "typography": Object {
+        "size": Object {
+          "code": 90,
+          "l1": 32,
+          "l2": 40,
+          "l3": 48,
+          "m1": 20,
+          "m2": 24,
+          "m3": 28,
+          "s1": 12,
+          "s2": 14,
+          "s3": 16,
+        },
+        "type": Object {
+          "code": "\\"SFMono-Regular\\", Consolas, \\"Liberation Mono\\", Menlo, Courier, monospace",
+          "primary": "\\"Nunito Sans\\", \\"Mandali\\", Helvetica, Arial, sans-serif",
+        },
+        "weight": Object {
+          "black": "900",
+          "bold": "700",
+          "extrabold": "800",
+          "extralight": "200",
+          "light": "300",
+          "regular": "400",
+        },
+      },
+    }
+  }
+>
+  <styled.span />
+</styled.button>
+`;

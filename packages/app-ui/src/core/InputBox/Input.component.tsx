@@ -1,14 +1,20 @@
-import React from "react";
+import React, {SyntheticEvent} from "react";
 import styled, { css } from "styled-components";
-import { colors, typography, spacing } from "../theme/styles";
+import { colors, typography } from "../theme/styles";
+import { Icon } from "../Icon/Icon.component";
 
 interface InputProps {
   appearance: string;
   hideLabel: boolean;
+  icon?: string;
   orientation?: string;
-  error?: string;
   focused?: boolean;
-  className?: string;
+  error?: boolean;
+  label?:string;
+  id?:string;
+  placeholder?:string;
+  onChange?:(event:SyntheticEvent) => void;
+  disabled?: boolean;
 }
 
 const Label = styled.label<Partial<InputProps>>`
@@ -60,11 +66,6 @@ const InputText = styled.input.attrs({ type: "text" })`
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 3em ${colors.lightest} inset;
   }
-`;
-
-const Error = styled.div`
-  position: absolute;
-  right: 0;
 `;
 
 const InputWrapper = styled.div<Partial<InputProps>>`
@@ -140,95 +141,71 @@ const InputWrapper = styled.div<Partial<InputProps>>`
         }
       `}
   }
-
-  ${Error} {
-    position: absolute;
-    top: 50%;
-    right: 1px;
-    margin-left: 1px;
-    transform: translate3d(100%, -50%, 0);
-    transition: all 200ms ease-out;
-    font-family: ${(props) =>
-      props.appearance === "code"
-        ? typography.type.code
-        : typography.type.primary} ;
-    font-size: ${typography.size.s1}px;
-    line-height: 1em;
-    opacity: 0;
-    pointer-events: none;
-
-    background: ${(props) =>
-      props.appearance !== "tertiary" && "rgba(255,255,255,.9)"};
-    color: ${colors.danger};
-
-    ${(props) =>
-      props.appearance === "tertiary" &&
-      css`
-        right: 0;
-      `}
-    ${(props) =>
-      props.appearance === "code" &&
-      css`
-        top: -4px;
-        right: auto;
-        left: 0;
-        border-radius: ${spacing.borderRadius.small}px;
-        padding: 6px;
-      `}
-  }
-
   ${(props) =>
     props.error &&
     css`
-    ${Error} {
       color: ${colors.danger};
       background: none;
       transform: translate3d(0%, -50%, 0);
       opacity: 1;
-      padding: .25em 1.25em .25em .5em;
-    }
+      padding: 0.25em 1.25em 0.25em 0.5em;
+    `}
 
-    ${InputText}:hover + ${Error},
-    ${InputText}:focus + ${Error} {
-      opacity: 0;
-      transform: translate3d(100%, -50%, 0);
-      padding: 0;
-    }
+  ${(props) =>
+    props.icon &&
+    css`
+      > svg {
+        transition: all 150ms ease-out;
+        position: absolute;
+        top: 50%;
+        height: 1em;
+        width: 1em;
+        font-size: ${props.appearance === "pill" ? 0.75 : 1}em;
+        margin-top: -0.5em;
+        z-index: 1;
 
-    ${props.focused &&
-      css`
-        ${Error} {
-          opacity: 0;
-          transform: translate3d(100%, -50%, 0);
+        background: transparent;
+
+        path {
+          transition: all 150ms ease-out;
+          fill: ${colors.mediumdark};
         }
-      `}
+      }
 
-    ${props.appearance === "code" &&
-      css`
-        ${Error} {
-          opacity: 0;
-        }
-        ${InputText}:hover + ${Error}, ${InputText}:focus + ${Error} {
-          transform: translate3d(0%, -100%, 0);
-          opacity: 1;
-          padding: 0.25em 1.25em 0.25em 0.5em;
-        }
-      `}
+      ${InputText}:focus + svg path {
+        fill: ${colors.darker};
+      }
 
-    ${props.appearance !== "tertiary" &&
-      css`
-        ${InputText} {
-          box-shadow: ${colors.danger} 0 0 0 1px inset;
-          &:focus {
-            box-shadow: ${colors.danger} 0 0 0 1px inset !important;
+      ${InputText} {
+        padding-left: 2.75em;
+
+        ${props.appearance === "pill" &&
+          css`
+            padding-left: 2.4em;
+          `};
+        ${props.appearance === "tertiary" &&
+          css`
+            padding-left: 1.75em;
+          `};
+      }
+      > svg {
+        left: ${props.appearance === "tertiary" ? 0 : 0.8}em;
+      }
+      ${props.error &&
+        css`
+          ${InputText} {
+            box-shadow: ${colors.danger} 0 0 0 1px inset;
+            &:focus {
+              box-shadow: ${colors.danger} 0 0 0 1px inset !important;
+            }
           }
-        }
-      `};
-
-    svg {
-      path { fill: ${colors.danger}; }
-    }
-  `}
+          svg {
+            path {
+              fill: ${colors.danger};
+            }
+          }
+        `};
+    `}
 `;
 
 const InputContainer = styled.div<Partial<InputProps>>`
@@ -253,53 +230,40 @@ const InputContainer = styled.div<Partial<InputProps>>`
     `}
 `;
 
-export const Input = ({
-  id = "",
-  value = "",
-  label = "Label",
-  hideLabel = false,
-  orientation = "vertical",
-  error = "",
-  appearance = "default",
-  className = "",
-  focused = false,
-  lastErrorValue = "",
-  ...props
-}) => {
-  const errorId = `${id}-error`;
-  let errorMessage = error;
-
-  if (lastErrorValue) {
-    if (value !== lastErrorValue) {
-      errorMessage = "";
-    }
-  }
-
+export const Input = (props: InputProps) => {
+  const {
+    id,
+    label,
+    hideLabel,
+    orientation,
+    icon,
+    appearance,
+    focused,
+  } = props;
   return (
-    <InputContainer orientation={orientation} className={className}>
+    <InputContainer orientation={orientation}>
       <LabelWrapper hideLabel={hideLabel}>
         <Label htmlFor={id} appearance={appearance}>
           {label}
         </Label>
       </LabelWrapper>
 
-      <InputWrapper
-        error={errorMessage}
-        data-error={error}
-        appearance={appearance}
-        focused={focused}
-      >
-        <InputText
-          id={id}
-          value={value}
-          aria-describedby={errorId}
-          aria-invalid={!!error}
-          {...props}
-        />
-        <Error id={errorId}>{error}</Error>
+      <InputWrapper icon={icon} appearance={appearance} focused={focused}>
+        {icon && <Icon icon={icon} aria-hidden />}
+        <InputText id={id} {...props} />
       </InputWrapper>
     </InputContainer>
   );
+};
+
+Input.defaultProps = {
+  id: "",
+  label: "Label",
+  hideLabel: false,
+  orientation: "vertical",
+  icon: "",
+  appearance: "primary",
+  focused: false,
 };
 
 export default Input;

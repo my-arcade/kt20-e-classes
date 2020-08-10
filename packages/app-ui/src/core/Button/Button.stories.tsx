@@ -3,31 +3,44 @@ import React from "react";
 
 import { Button } from "./Button.component";
 import { Icon } from "../Icon/Icon.component";
+import theme from "../theme";
 
 export default {
   title: "Design System/Button",
   component: Button,
 };
 
-export const Basic = (args: any) => (
-  <Button {...args}>Label</Button>
-);
+export const Basic = (args: any) => <Button {...args}>Label</Button>;
 
 export const All = () => (
   <>
-    <Button appearance="primary">Primary</Button>
-    <Button appearance="secondary">Secondary</Button>
-    <Button appearance="tertiary">Tertiary</Button>
-    <Button appearance="outline">Outline</Button>
-    <Button appearance="primaryOutline">Outline primary</Button>
-    <Button appearance="secondaryOutline">Outline secondary</Button>
+    <Button theme={theme} appearance="primary">
+      Primary
+    </Button>
+    <Button theme={theme} appearance="secondary">
+      Secondary
+    </Button>
+    <Button theme={theme} appearance="tertiary">
+      Tertiary
+    </Button>
+    <Button theme={theme} appearance="outline">
+      Outline
+    </Button>
+    <Button theme={theme} appearance="primaryOutline">
+      Outline primary
+    </Button>
+    <Button theme={theme} appearance="secondaryOutline">
+      Outline secondary
+    </Button>
   </>
 );
 
 export const Sizes = () => (
   <>
-    <Button appearance="primary">Default</Button>
-    <Button appearance="primary" size="small">
+    <Button theme={theme} appearance="primary">
+      Default
+    </Button>
+    <Button theme={theme} appearance="primary" size="small">
       Small
     </Button>
   </>
@@ -35,19 +48,24 @@ export const Sizes = () => (
 
 export const Loading = () => (
   <>
-    <Button appearance="primary" isLoading>
+    <Button theme={theme} appearance="primary" isLoading>
       Primary
     </Button>
-    <Button appearance="secondary" isLoading>
+    <Button theme={theme} appearance="secondary" isLoading>
       Secondary
     </Button>
-    <Button appearance="tertiary" isLoading>
+    <Button theme={theme} appearance="tertiary" isLoading>
       Tertiary
     </Button>
-    <Button appearance="outline" isLoading>
+    <Button theme={theme} appearance="outline" isLoading>
       Outline
     </Button>
-    <Button appearance="outline" isLoading loadingText="Custom...">
+    <Button
+      theme={theme}
+      appearance="outline"
+      isLoading
+      loadingText="Custom..."
+    >
       Outline
     </Button>
   </>
@@ -55,16 +73,16 @@ export const Loading = () => (
 
 export const Disabled = () => (
   <>
-    <Button appearance="primary" isDisabled>
+    <Button theme={theme} appearance="primary" disabled>
       Primary
     </Button>
-    <Button appearance="secondary" isDisabled>
+    <Button theme={theme} appearance="secondary" disabled>
       Secondary
     </Button>
-    <Button appearance="tertiary" isDisabled>
+    <Button theme={theme} appearance="tertiary" disabled>
       Tertiary
     </Button>
-    <Button appearance="outline" isDisabled>
+    <Button theme={theme} appearance="outline" disabled>
       Outline
     </Button>
   </>
@@ -72,10 +90,10 @@ export const Disabled = () => (
 
 export const ContainsIcon = () => (
   <>
-    <Button appearance="outline" containsIcon>
+    <Button theme={theme} appearance="outline" containsIcon>
       <Icon icon="link" aria-label="Link" />
     </Button>
-    <Button appearance="outline" size="small" containsIcon>
+    <Button theme={theme} appearance="outline" size="small" containsIcon>
       <Icon icon="link" aria-label="Link" />
     </Button>
   </>

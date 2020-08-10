@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar Component should display the avatar 1`] = `
+<styled.div
+  aria-label="loading"
+  isLoading={false}
+  size="medium"
+  src=""
+>
+  <styled.div
+    aria-hidden="true"
+    size="medium"
+  >
+    L
+  </styled.div>
+</styled.div>
+`;
