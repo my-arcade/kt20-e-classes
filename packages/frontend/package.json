@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "start": "NODE_ENV=development webpack --open --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --open --config webpack.prod.js",
+    "docker:login": "`aws ecr get-login --no-include-email --registry-ids 934974874222`",
     "lang:extract": "formatjs extract \"src/**/*.ts*\" --out-file src/lang/ro.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "lang:compile": "formatjs compile src/lang/en.json --ast --out-file src/lang/compiled/en.json",
     "lang:help": "formatjs extract --help"
@@ -19,6 +20,7 @@
     "@formatjs/cli": "^2.3.0",
     "@formatjs/ts-transformer": "^2.5.1",
     "babel-loader": "^8.1.0",
+    "babel-plugin-styled-components": "^1.11.1",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^4.1.0",
     "file-loader": "^6.0.0",

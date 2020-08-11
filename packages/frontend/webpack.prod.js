@@ -7,5 +7,8 @@ const path = require('path');
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: 'source-map'
+  devtool: 'none',
+  output: {
+    filename: '[name].[contenthash].js'
+  }
 })

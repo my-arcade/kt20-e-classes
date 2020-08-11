@@ -6,6 +6,11 @@
   },
   "scripts": {
     "storybook": "yarn workspace app-ui storybook",
+    "docker:build": "docker build -t frontend-docker:latest .",
+    "docker:build:qa": "docker build -t 934974874222.dkr.ecr.eu-central-1.amazonaws.com/knolyx-frontend:qa .",
+    "docker:push:qa": "docker push 934974874222.dkr.ecr.eu-central-1.amazonaws.com/knolyx-frontend:qa",
+    "docker:deploy:qa": "yarn docker:login && yarn docker:build:qa && yarn docker:push:qa",
+    "docker:start": "docker run -it -p 3005:3005 --rm frontend-docker:latest",
     "*": "echo 'It seems your running dev from the root folder, enter your respective folder (frontend / mobile) or use the yarn workspace command'"
   }
 }
