@@ -5,8 +5,9 @@ interface ButtonProps {
   readonly danger?: boolean;
   readonly disabled?: boolean;
   readonly onClick?: (event: MouseEvent<HTMLElement>) => void;
+  readonly type?: 'submit' | 'button';
   readonly size?: string;
-  readonly theme: DefaultTheme;
+  readonly theme?: DefaultTheme;
   readonly isLoading?: boolean;
   readonly containsIcon?: boolean;
   readonly appearance?: string;

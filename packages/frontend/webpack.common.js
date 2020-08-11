@@ -23,6 +23,7 @@ module.exports = {
       '@models': path.join(__dirname, './../models/src'),
       '@ui': path.join(__dirname, './../app-ui/src'),
       '@modules': path.join(__dirname, './src/modules'),
+      '@form': path.join(__dirname, './../app-ui/src/core/Form')
     }
   },
   cache: true,

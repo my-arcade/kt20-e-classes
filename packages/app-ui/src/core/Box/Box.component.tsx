@@ -1,21 +1,19 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 
-interface BoxProps {
-  readonly fillSpace: number;
-  readonly theme: DefaultTheme;
+export type BoxProps = {
+  readonly fill: number;
   readonly borderRadius?: number;
-  readonly padding?: number;
 }
 
 const Box = styled.div<Partial<BoxProps>>`
-  background-color: ${({theme} : BoxProps) => theme.colors.background};
-  min-width: 10px;
-  min-height: 10px;
+  background-color: ${({theme}) => theme.colors.background};
+  min-width: 50px;
+  min-height: 50px;
   height: fit-content;
-  border-radius: ${({borderRadius} : BoxProps) => borderRadius || 10}px;
-  flex: ${({fillSpace} : BoxProps) => fillSpace ? 1 : 'initial'};
+  border-radius: ${({borderRadius}) => borderRadius || 10}px;
+  flex: ${({fill}) => fill ? 1 : 'initial'};
   
-  ${({padding} : BoxProps) => padding ? `padding: ${padding}px` : ''};
+  padding: 20px 10px 7px 10px;
 `
 // box-shadow: 0 3px 3px rgba(0,0,0,0.01);
 export default Box

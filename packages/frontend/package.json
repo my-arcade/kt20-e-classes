@@ -19,6 +19,7 @@
     "@babel/preset-react": "^7.10.4",
     "@formatjs/cli": "^2.3.0",
     "@formatjs/ts-transformer": "^2.5.1",
+    "@types/yup": "^0.29.4",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "clean-webpack-plugin": "^3.0.0",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.10.5",
+    "@hookform/resolvers": "^0.1.0",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
     "@types/webpack": "^4.41.20",
@@ -52,6 +54,7 @@
     "source-map-loader": "^1.0.1",
     "styled-components": "^5.1.1",
     "styled-icons": "^10.14.1",
-    "webpack-merge": "^5.1.1"
+    "webpack-merge": "^5.1.1",
+    "yup": "^0.29.3"
   }
 }

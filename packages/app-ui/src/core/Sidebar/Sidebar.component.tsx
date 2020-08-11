@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, ReactNode } from 'react'
 import styled from 'styled-components';
-import { Text } from '@ui/core';
+import Text from './../Text/Text.component';
 import { useNavigate } from 'react-router-dom';
 import SidebarContext from './SidebarContext.component';
 

@@ -65,9 +65,9 @@ const Table : FC<TableProps> = ({ config, list }) => {
         {list.map(item => (
           <>
             <Divider />
-            <Row>
+            <Row key={item.id}>
               {config.map(cell => (
-                <Cell>
+                <Cell key={cell.key}>
                   <div>{cell.transformer ? cell.transformer(item) : item[cell.key]}</div>
                 </Cell>
               ))}

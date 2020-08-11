@@ -1,27 +1,27 @@
 import React, { FC } from 'react'
-import styled, { DefaultTheme } from 'styled-components'
+import styled from 'styled-components'
 
 interface TextProps {
   readonly size?: number;
   readonly meta?: boolean;
   readonly bold?: boolean;
   readonly children?: string;
-  readonly theme?: DefaultTheme;
   readonly className?: string;
+  readonly onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const CustomDiv : FC<TextProps> = ({children, className} : TextProps) => {
+const CustomDiv : FC<TextProps> = ({children, className, onClick} : TextProps) => {
   return (
-    <div className={className}>
+    <div className={className} onClick={onClick}>
       {children}
     </div>
   )
 }
 
 const Text = styled(CustomDiv)<TextProps>`
-  font-size: ${({size}: TextProps) => size ||  16}px;
-  color: ${({meta, theme}: TextProps) => !meta ? theme.colors.text : theme.colors.metaText};
-  font-weight: ${({bold}: TextProps) => bold ? 'bold' : 'normal'};
-  font-family: ${({theme}: TextProps) => theme.typography.type.primary}; 
+  font-size: ${({size}) => size ||  16}px;
+  color: ${({meta, theme}) => !meta ? theme.colors.text : theme.colors.metaText};
+  font-weight: ${({bold}) => bold ? 'bold' : 'normal'};
+  font-family: ${({theme}) => theme.typography.type.primary}; 
 `
 export default Text;

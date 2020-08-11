@@ -9,20 +9,17 @@ interface InputProps {
   orientation?: string;
   focused?: boolean;
   error?: boolean;
-  label?:string;
-  id?:string;
+  label?: string;
+  name?: string;
+  type: string;
   placeholder?:string;
   onChange?:(event:SyntheticEvent) => void;
   disabled?: boolean;
 }
 
 const Label = styled.label<Partial<InputProps>>`
-  font-weight: ${(props) =>
-    props.appearance !== "code" && typography.weight.bold};
-  font-family: ${(props) =>
-    props.appearance === "code" && typography.type.code};
-  font-size: ${(props) =>
-    props.appearance === "code" ? typography.size.s1 : typography.size.s2}px;
+  font-weight: ${({theme}) => theme.typography.weight.bold};
+  font-size: ${({theme}) => theme.typography.size.s2}px;
 `;
 
 const LabelWrapper = styled.div<Partial<InputProps>>`
@@ -46,8 +43,8 @@ const LabelWrapper = styled.div<Partial<InputProps>>`
 
 const InputText = styled.input.attrs({ type: "text" })`
   ::placeholder {
-    color: ${colors.mediumdark};
-    font-weight: ${typography.weight.bold};
+    color: ${({theme}) => theme.colors.mediumdark};
+    font-weight: ${({theme}) => theme.typography.weight.bold};
   }
   appearance: none;
   border: none;
@@ -74,15 +71,14 @@ const InputWrapper = styled.div<Partial<InputProps>>`
   width: 100%;
 
   ${InputText} {
-    background: ${colors.lightest};
-    border-radius: 0;
-    color: ${colors.darkest};
-    font-family: ${(props) =>
-      props.appearance === "code" && typography.type.code};
-    font-size: ${(props) =>
-      props.appearance === "code" ? typography.size.s1 : typography.size.s2}px;
+    background: ${({theme}) => theme.colors.lightest};
+    border-radius: 7px;
+    color: ${({theme}) => theme.colors.darkest};
+    font-size: ${({theme}) => theme.typography.size.s2}px;
     line-height: 20px;
     padding: .715em 1em;
+
+    box-shadow: ${colors.border} 0 0 0 1px inset;
 
     &:focus { box-shadow: ${colors.primary} 0 0 0 1px inset; }
 
@@ -119,21 +115,6 @@ const InputWrapper = styled.div<Partial<InputProps>>`
         background: transparent;
 
         box-shadow: ${colors.medium} 0 0 0 1px inset;
-
-        &:focus {
-          box-shadow: ${colors.secondary} 0 0 0 1px inset;
-        }
-      `}
-
-    ${(props) =>
-      props.appearance === "code" &&
-      css`
-        font-size: ${typography.size.s2 - 1}px;
-        line-height: 16px;
-        font-family: ${typography.type.code};
-        border-radius: 2px;
-        background: rgba(0, 0, 0, 0.05);
-        padding: 3px 6px;
 
         &:focus {
           box-shadow: ${colors.secondary} 0 0 0 1px inset;
@@ -229,10 +210,11 @@ const InputContainer = styled.div<Partial<InputProps>>`
     `}
 `;
 
-export const Input = (props: InputProps) => {
+export const Input = React.forwardRef((props: InputProps, ref) => {
   const {
-    id,
     label,
+    name,
+    type,
     hideLabel,
     orientation,
     appearance,
@@ -241,20 +223,19 @@ export const Input = (props: InputProps) => {
   return (
     <InputContainer orientation={orientation}>
       <LabelWrapper hideLabel={hideLabel}>
-        <Label htmlFor={id} appearance={appearance}>
+        <Label appearance={appearance}>
           {label}
         </Label>
       </LabelWrapper>
 
       <InputWrapper appearance={appearance} focused={focused}>
-        <InputText id={id} {...props} />
+        <InputText type={type} name={name} ref={ref} {...props} />
       </InputWrapper>
     </InputContainer>
   );
-};
+});
 
 Input.defaultProps = {
-  id: "",
   label: "Label",
   hideLabel: false,
   orientation: "vertical",

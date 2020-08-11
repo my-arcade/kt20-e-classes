@@ -56,16 +56,8 @@ export const All = () => (
       appearance="pill"
       onChange={onChange}
     />
-    <Input id="Code"  label="Code" hideLabel appearance="code" onChange={onChange} />
     <Input
-      id="Code-horizontal"
-      appearance="code"
-      orientation="horizontal"
-      onChange={onChange}
-      label="horizontal"
-    />
-    <Input
-      id="Code-secondary-horizontal"
+      id="secondary-horizontal"
       appearance="secondary"
       orientation="horizontal"
       onChange={onChange}
@@ -157,18 +149,4 @@ export const Pill = () => (
     appearance="pill"
     onChange={onChange}
   />
-);
-
-export const Code = () => (
-  <form style={{ background: '#EEEEEE', padding: '3em' }}>
-    <Input
-      id="Code-placeholder"
-      placeholder="Code placeholder"
-      label="Code placeholder"
-      hideLabel
-      appearance="code"
-      onChange={onChange}
-    />
-    <Input id="Code" label="Code" hideLabel appearance="code" onChange={onChange} />
-  </form>
 );
