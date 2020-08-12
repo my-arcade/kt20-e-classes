@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Secured from './Secured.component';
 import Header from './Header.component';
-import { Sidebar, SidebarContext } from '@ui/core';
+import { Sidebar, SidebarContext, ProgressLoader } from '@ui/core';
 
 import { Dashboard as DashboardIcon } from '@styled-icons/boxicons-solid'
 import { Settings as SettingsIcon } from '@styled-icons/ionicons-solid'
@@ -56,24 +56,27 @@ const Navigator : FC<{}> = () => {
   const decreaseNoOfSidebars = () => setNumberOfSidebars(prevNoOfSidebars => prevNoOfSidebars - 1);
 
   return (
-    <Routes>
-      <Route path="login/*" element={<AuthenticationRouter />} />
-      <Secured>
-        <Header />
-        <SidebarContext.Provider value={{noOfSidebars, increaseNoOfSidebars, decreaseNoOfSidebars}}>
-          <Container>
-            <Sidebar primary items={sidebarItems} />
-            <Screen>
-              <Routes>
-                <Route path="/" element={<DashboardRouter />} />
-                <Route path="administration/*" element={<AdministrationRouter />} />
-                <Route path="*" element={<div>Not found </div>} />
-              </Routes>
-            </Screen>
-          </Container>
-        </SidebarContext.Provider>
-      </Secured>
-  </Routes>
+    <>
+      <ProgressLoader loading={false} />
+      <Routes>
+        <Route path="login/*" element={<AuthenticationRouter />} />
+        <Secured>
+          <Header />
+          <SidebarContext.Provider value={{noOfSidebars, increaseNoOfSidebars, decreaseNoOfSidebars}}>
+            <Container>
+              <Sidebar primary items={sidebarItems} />
+              <Screen>
+                <Routes>
+                  <Route path="/" element={<DashboardRouter />} />
+                  <Route path="administration/*" element={<AdministrationRouter />} />
+                  <Route path="*" element={<div>Not found </div>} />
+                </Routes>
+              </Screen>
+            </Container>
+          </SidebarContext.Provider>
+        </Secured>
+      </Routes>
+    </>
   )
 }
 

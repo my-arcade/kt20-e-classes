@@ -14,6 +14,7 @@ axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.withCredentials = true
 
 const Container = styled.div`
+  position: relative;
   background: ${({theme}) => theme.colors.background};
   width: 100%;
   height: 100%;
@@ -46,7 +47,7 @@ class App extends Component<{}, StateType> {
     if(!messages) return (
       <div>Loading...</div>
     )
-
+    console.log(theme.colors.skeleton.base)
     return (
       <Provider store={store}>
         <ThemeProvider theme={theme}>

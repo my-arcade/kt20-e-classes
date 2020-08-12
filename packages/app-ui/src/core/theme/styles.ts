@@ -19,6 +19,11 @@ export const colors = {
   clearBackground: '#FFFFFF',
   background: '#FAFBFD',
 
+  skeleton: {
+    base: '#ebeff7',
+    highlight: 'rgb(250, 251, 253, 0.35)'
+  },
+
   text: '#2A3A5F',
   metaText: 'rgb(42, 58, 95, 0.5)',
   clearText: '#FFFFFF',

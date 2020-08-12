@@ -37,6 +37,7 @@
   "dependencies": {
     "@babel/runtime": "^7.10.5",
     "@hookform/resolvers": "^0.1.0",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
     "@types/webpack": "^4.41.20",
@@ -46,6 +47,7 @@
     "mobx": "^4.15.4",
     "mobx-react": "^6.2.3",
     "mobx-state-tree": "^3.17.2",
+    "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.1.0",

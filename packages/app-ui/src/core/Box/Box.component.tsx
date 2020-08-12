@@ -11,8 +11,7 @@ const Box = styled.div<Partial<BoxProps>>`
   min-height: 50px;
   height: fit-content;
   border-radius: ${({borderRadius}) => borderRadius || 10}px;
-  flex: ${({fill}) => fill ? 1 : 'initial'};
-  
+  flex: ${({fill}) => fill ? 1 : 'initial'};  
   padding: 20px 10px 7px 10px;
 `
 // box-shadow: 0 3px 3px rgba(0,0,0,0.01);

@@ -13,6 +13,11 @@ declare module 'styled-components' {
       clearBackground: string;
       dividerColor: string;
 
+      skeleton: {
+        base: string;
+        highlight: string;
+      };
+
        // Monochrome
       lightest: string;
       lighter: string;

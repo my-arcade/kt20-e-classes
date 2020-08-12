@@ -2,17 +2,13 @@ import React, { FC } from 'react'
 import Box, { BoxProps } from './Box.component'
 import styled from 'styled-components'
 import { Plus } from '@styled-icons/entypo';
-
-const Text = styled.div`
-  font-size: 19px;
-`
+import Text from './../Text/Text.component'
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 18px;
-  margin-top: 7px;
 `
 
 const ActionIconContainer = styled.div`
@@ -38,7 +34,7 @@ export type ActionBoxProps = BoxProps & {
 const ActionBox : FC<ActionBoxProps> = ({title, onClick, children, action, ...props}) => (
   <Box {...props}>
     <Header>
-      <Text>{title}</Text>
+      <Text size={23}>{title}</Text>
       {action === 'plus' && (
         <ActionIconContainer onClick={onClick}>
           <Plus size={20} />
