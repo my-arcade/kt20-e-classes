@@ -7,6 +7,7 @@ export type ConfigProps = {
   name: string,
   sortable?: boolean,
   transformer?: (item?: { [key: string]: any }) => ReactNode;
+  type?: 'edit'
 }
 
 type HeaderProps = {

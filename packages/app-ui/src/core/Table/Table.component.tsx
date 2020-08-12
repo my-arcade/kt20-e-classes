@@ -6,13 +6,15 @@ import styled from 'styled-components'
 import Button from './../Button/Button.component'
 import Header, { ConfigProps } from './Header.component'
 import Footer from './Footer.component'
+import { Edit } from '@styled-icons/boxicons-regular'
 
 type TableProps = {
   config: ConfigProps[],
   list: { [key: string]: any }[],
   actions: ReactNode[],
   onDelete: (ids: string[]) => void,
-  loading?: boolean
+  loading?: boolean,
+  onEdit?: (item : { [key: string]: any }) => void
 }
 
 const Container = styled(Box)`
@@ -35,10 +37,6 @@ const Cell = styled.td`
   border-top-color: ${({theme}) => theme.colors.dividerColor};
   border-top-width: 1px;
   border-top-style: solid;
-`
-
-const Divider = styled.div`
-
 `
 
 const TableContainer = styled.table`
@@ -66,7 +64,25 @@ const ActionContainer = styled.div`
   align-items: center;
 `
 
-const Table : FC<TableProps> = ({ config, list : dataList, actions: Actions, onDelete, loading }) => {
+const EditContainer = styled.div`
+  cursor: pointer;
+`
+
+function renderCell(cell, item, onEdit, loading) {
+  if(cell.type != null && cell.type === 'edit') {
+    return (
+      <EditContainer onClick={loading ? undefined : () => onEdit(item)}>
+        <Edit size={20} />
+      </EditContainer>
+    )
+  }
+
+  return (
+    <div>{cell.transformer ? cell.transformer(item, loading) : (loading ? <Skeleton /> : item[cell.key])}</div>
+  )
+}
+
+const Table : FC<TableProps> = ({ config, list : dataList, actions: Actions, onDelete, loading, onEdit }) => {
   const list = loading ? [{}, {}, {}, {}] : dataList
   const [selectedMap, setSelected] = useState({})
 
@@ -118,12 +134,15 @@ const Table : FC<TableProps> = ({ config, list : dataList, actions: Actions, onD
                 </Cell>
                 {config.map(cell => (
                   <Cell key={cell.key}>
-                    <div>{cell.transformer ? cell.transformer(item, loading) : (loading ? <Skeleton /> : item[cell.key])}</div>
+                    {renderCell(cell, item, onEdit, loading)}
                   </Cell>
                 ))}
               </Row>
             </>
           ))}
+          {list.length === 0 && !loading && (
+            <div>No existing data!</div>
+          )}
         </Content>
       </TableContainer>
       <Footer page={1} count={300} pageSize={10} onPageChange={handlePageChange} />
