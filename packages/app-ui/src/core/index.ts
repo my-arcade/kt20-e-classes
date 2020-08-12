@@ -15,8 +15,10 @@ import Form from './Form/Form.component'
 import ProgressLoader from './Loader/ProgressLoader.component'
 import Margin from './Row/Margin.component'
 import Skeleton from './Skeleton/Skeleton.component'
+import Checkbox from './Checkbox/Checkbox.component'
 
 export {
+  Checkbox,
   Margin,
   ActionBoxProps,
   BoxProps,
