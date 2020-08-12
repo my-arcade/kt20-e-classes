@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
 import { ActionBox, Text, Skeleton, ActionBoxProps } from '@ui/core'
 
 const DashboardAssessments : FC<ActionBoxProps & {loading?: boolean}> = ({ loading, ...props }) => {

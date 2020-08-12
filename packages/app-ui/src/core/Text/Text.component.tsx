@@ -1,11 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-interface TextProps {
+export interface TextProps {
   readonly size?: number;
   readonly meta?: boolean;
   readonly bold?: boolean;
-  readonly children?: string;
+  readonly children?: ReactNode | string;
   readonly className?: string;
   readonly onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }

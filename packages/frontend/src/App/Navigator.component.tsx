@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import Secured from './Secured.component';
+import Secured from './Secured.template';
 import Header from './Header.component';
 import { Sidebar, SidebarContext, ProgressLoader } from '@ui/core';
 

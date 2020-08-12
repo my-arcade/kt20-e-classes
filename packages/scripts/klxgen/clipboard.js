@@ -1,5 +1,5 @@
 const clipboardy = require('clipboardy');
 
-clipboardy.writeSync('helo knolyx');
+clipboardy.writeSync('helo kt20eclass');
 
 clipboardy.readSync();

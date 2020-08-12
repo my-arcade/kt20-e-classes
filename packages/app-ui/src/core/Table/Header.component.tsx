@@ -6,7 +6,7 @@ export type ConfigProps = {
   key: string,
   name: string,
   sortable?: boolean,
-  transformer?: (item?: { [key: string]: any }) => ReactNode;
+  transformer?: (item?: { [key: string]: any }, loading?: boolean) => ReactNode;
   type?: 'edit'
 }
 
@@ -31,7 +31,7 @@ const HeaderProxy : FC<HeaderProps> = ({ config, loading }) => {
     <Header>
       <tr>
         <HeaderCell key={'checkbox'}>
-          <Checkbox disabled={loading} />
+          <Checkbox onChange={() => {}} disabled={loading} />
         </HeaderCell>
         {config.map(cell => (
           <HeaderCell key={cell.key}>

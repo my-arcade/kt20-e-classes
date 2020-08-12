@@ -1,5 +1,11 @@
 import { types, Instance, flow, getEnv } from 'mobx-state-tree'
 
+enum AuthenticationState {
+  INITIAL = 'INITIAL',
+  LOADING = 'LOADING',
+  AUTHENTICATED = 'AUTHENTICATED',
+  NOT_AUTHENTICATED = 'NOT_AUTHENTICATED'
+}
 
 const AuthenticatedUser = types
   .model('AuthenticatedUser', {
@@ -25,31 +31,49 @@ const AuthenticatedUser = types
 
 const Login = types
   .model('Login', {
-    authenticated: types.boolean,
+    state: types.optional(types.enumeration<AuthenticationState>(Object.values(AuthenticationState)), AuthenticationState.INITIAL),
     user: types.optional(AuthenticatedUser, {})
   })
   .views(self => ({
     get api() {
       const { authenticationApi } = getEnv(self)
       return authenticationApi
+    },
+    get authenticated() {
+      return self.state === AuthenticationState.AUTHENTICATED
+    },
+    get loading() {
+      return self.state === AuthenticationState.LOADING
+    },
+    get triedAuthentication() {
+      return self.state !== AuthenticationState.INITIAL
     }
   }))
   .actions(self => ({
     login: flow(function * (payload : {email: string}) {
       const { api } = self
-      yield api.login(payload)
-      self.authenticated = true
-      self.user = yield self.user.getCurrent();
+      self.state = AuthenticationState.LOADING
+      try {
+        yield api.login(payload)
+        self.state = AuthenticationState.AUTHENTICATED
+        self.user = yield self.user.getCurrent();
+      } catch(err) {
+        self.state = AuthenticationState.NOT_AUTHENTICATED
+        if(!err.response || err.response.status !== 401) {
+          throw new Error(err);
+        }
+      }
     }),
 
     provisionAuthentication: flow(function * () {
       const { api: userApi } = self
       try {
+        self.state = AuthenticationState.LOADING
         yield userApi.provisionAuthentication()
-        self.authenticated = true
+        self.state = AuthenticationState.AUTHENTICATED
         self.user = yield self.user.getCurrent();
       } catch(err) {
-        self.authenticated = false
+        self.state = AuthenticationState.NOT_AUTHENTICATED
         if(!err.response || err.response.status !== 401) {
           throw new Error(err);
         }

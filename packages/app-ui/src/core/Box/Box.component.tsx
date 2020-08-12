@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export type BoxProps = {
-  readonly fill: number;
+  readonly fill?: number;
   readonly borderRadius?: number;
 }
 

@@ -1,9 +1,12 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import ReactPaginate from 'react-paginate'
 
 type FooterProps = {
-
+  count: number;
+  pageSize: number;
+  page: number;
+  onPageChange: (event: {selected: number}) => void;
 }
 
 function getTotalPages({count, pageSize} : { count: number, pageSize: number }) : number {

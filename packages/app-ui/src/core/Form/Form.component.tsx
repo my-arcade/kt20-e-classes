@@ -11,7 +11,9 @@ const Form = <T, >({config, onSubmit, children} : PropsWithChildren<FormProps<T>
   const { reset, handleSubmit } = config
 
   const onSubmitEnhanced = (values : T) => {
+    console.log(values)
     onSubmit(values)
+    console.log(reset)
     reset(values)
   }
   return (

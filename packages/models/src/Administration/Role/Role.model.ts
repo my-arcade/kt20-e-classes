@@ -1,6 +1,7 @@
 import { types, Instance, flow, SnapshotIn, cast, getEnv } from 'mobx-state-tree'
 import { RoleType, PermissionType } from './Role.types'
 import ApiStore from './../ApiStore.model'
+import { ApiState } from './../General.types'
 
 const rolePageSize = 10
 
@@ -27,15 +28,21 @@ const emptyRole : SnapshotIn<RoleModelType> = {
 
 const SimpleRole = types.model('SimpleRole', {
   id: types.number,
-  name: types.string,
-  description: types.string
+  name: types.optional(types.string, ''),
+  description: types.maybeNull(types.string)
 })
 
 const RolePaged = types.model('RolePaged', {
   count: 0,
   list: types.array(SimpleRole),
-  currentPage: 0
+  currentPage: 0,
+  state: types.optional(types.enumeration<ApiState>(Object.values(ApiState)), ApiState.INITIAL)
 })
+.views(self => ({
+  get loading() {
+    return self.state === ApiState.INITIAL || self.state === ApiState.LOADING
+  }
+}))
 
 
 const RoleStore = types.compose(
@@ -68,6 +75,7 @@ const RoleStore = types.compose(
     getPaged: flow(function * (page: number) {
       yield self.fetch({
         fetcher: roleApi => roleApi.getPaged({ page, size: rolePageSize }),
+        onStateChange: state => self.paged.state = state,
         onSuccess: ({ data }) => {
           self.paged =  { ...data, currentPage: page }
         }

@@ -8,7 +8,7 @@ const RoleRouter : FC<{}> = () => {
   return (
     <Routes>
       <Route path="/" element={<RolesScreen />} />
-      <Route path="create" element={<RoleForm />} />
+      <Route path="create" element={<RoleForm type='create' />} />
     </Routes>
   )
 }

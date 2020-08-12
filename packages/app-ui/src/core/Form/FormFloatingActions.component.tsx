@@ -49,6 +49,7 @@ const FormFloatingActions : React.FC<FormFloatingActionsProps> = ({onCancel}) =>
         <FloatingActions>
           <CancelLink onClick={onCancel}>Cancel</CancelLink>
           <Button appearance="primary" type="submit">Submit</Button>
+          <button type="submit">submit</button>
         </FloatingActions>
       </FloatingContainer>
       <Spacer />

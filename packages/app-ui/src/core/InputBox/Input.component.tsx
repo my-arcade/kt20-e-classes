@@ -18,8 +18,9 @@ interface InputProps {
 }
 
 const Label = styled.label<Partial<InputProps>>`
-  font-weight: ${({theme}) => theme.typography.weight.bold};
+  font-weight: ${({theme}) => theme.typography.weight.regular};
   font-size: ${({theme}) => theme.typography.size.s2}px;
+  color: ${({theme}) => theme.colors.text};
 `;
 
 const LabelWrapper = styled.div<Partial<InputProps>>`
@@ -41,10 +42,10 @@ const LabelWrapper = styled.div<Partial<InputProps>>`
     `}
 `;
 
-const InputText = styled.input.attrs({ type: "text" })`
+const InputText = styled.input`
   ::placeholder {
-    color: ${({theme}) => theme.colors.mediumdark};
-    font-weight: ${({theme}) => theme.typography.weight.bold};
+    color: ${({theme}) => theme.colors.metaText};
+    font-weight: ${({theme}) => theme.typography.weight.regular};
   }
   appearance: none;
   border: none;
@@ -241,6 +242,7 @@ Input.defaultProps = {
   orientation: "vertical",
   appearance: "primary",
   focused: false,
+  type: "text"
 };
 
 export default Input;

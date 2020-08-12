@@ -1,5 +1,6 @@
 import theme from './theme'
 import Text from './Text/Text.component'
+import LinkText from './Text/LinkText.component'
 import Box, { BoxProps } from './Box/Box.component'
 import Input from './InputBox/Input.component'
 import Sidebar from './Sidebar/Sidebar.component'
@@ -18,6 +19,7 @@ import Skeleton from './Skeleton/Skeleton.component'
 import Checkbox from './Checkbox/Checkbox.component'
 
 export {
+  LinkText,
   Checkbox,
   Margin,
   ActionBoxProps,

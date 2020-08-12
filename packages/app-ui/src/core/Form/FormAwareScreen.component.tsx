@@ -14,6 +14,9 @@ type FormAwareScreenProps<T> = ScreenProps & {
 
 const FormAwareScreen = <T, >({children, direction, config, onSubmit, defaultValues}: PropsWithChildren<FormAwareScreenProps<T>>) => {
   const { formState: {isDirty}, reset } = config
+
+  console.log(isDirty)
+
   return (
     <Screen direction={direction}>
       <Form onSubmit={onSubmit} config={config}>

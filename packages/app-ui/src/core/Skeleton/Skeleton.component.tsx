@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, CSSProperties } from 'react';
+import React, { FC, CSSProperties } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 export const defaultBaseColor = "#eee";
@@ -33,7 +33,6 @@ interface SkeletonProps {
   count?: number;
   duration?: number;
   width?: string | number;
-  wrapper?: ReactNode;
   height?: string | number;
   circle?: boolean;
   style?: CSSProperties;
@@ -50,7 +49,6 @@ const Skeleton : FC<SkeletonProps> = ({
   count,
   duration,
   width,
-  wrapper: Wrapper,
   height,
   circle,
   style: customStyle,
@@ -94,14 +92,7 @@ const Skeleton : FC<SkeletonProps> = ({
 
   return (
     <span>
-      {!!Wrapper
-        ? elements.map((element, i) => (
-            <Wrapper key={i}>
-              {element}
-              &zwnj;
-            </Wrapper>
-          ))
-        : elements}
+      {elements}
     </span>
   );
 }
@@ -111,8 +102,7 @@ export default Skeleton
 Skeleton.defaultProps = {
   count: 1,
   duration: 1.2,
-  width: null,
-  wrapper: null,
-  height: null,
+  width: undefined,
+  height: undefined,
   circle: false,
 };

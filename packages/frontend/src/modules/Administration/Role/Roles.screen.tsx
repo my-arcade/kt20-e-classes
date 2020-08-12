@@ -1,7 +1,8 @@
-import React, {ReactElement, useState, useEffect} from 'react'
-import { Table, Box, Button, Screen, Skeleton } from '@ui/core';
+import React, {ReactElement, useEffect} from 'react'
+import { Table, Button, Screen } from '@ui/core';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components'
+import { observer } from 'mobx-react';
+import { store } from '@models';
 
 type RoleScreenProps = {
 
@@ -13,17 +14,13 @@ const config = [
   { key: 'edit', name: 'edit', type: 'edit' }
 ]
 
-const list = [
-]
-
 
 function RoleScreen({} : RoleScreenProps) : ReactElement {
   const navigate = useNavigate();
-
-  const [loading, setLoading] = useState(true)
+  const { roleStore } = store;
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 4000)
+    roleStore.getPaged(0)
   }, [])
 
   const actions = [
@@ -33,13 +30,13 @@ function RoleScreen({} : RoleScreenProps) : ReactElement {
     <Screen>
       <Table
         onEdit={item => console.log(item)}
-        loading={loading}
+        loading={roleStore.paged.loading}
         config={config}
-        list={list}
+        list={roleStore.paged.list}
         actions={actions}
       />
     </Screen>
   )
 }
 
-export default RoleScreen
+export default observer(RoleScreen)

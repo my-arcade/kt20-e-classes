@@ -17,6 +17,13 @@ type TableProps = {
   onEdit?: (item : { [key: string]: any }) => void
 }
 
+type RenderCellProps = {
+  onEdit?: (item : { [key: string]: any }) => void
+  loading?: boolean;
+  cell: ConfigProps;
+  item: { [key: string]: any };
+}
+
 const Container = styled(Box)`
   padding: 20px 15px 10px 15px;
   width: 100%;
@@ -68,10 +75,10 @@ const EditContainer = styled.div`
   cursor: pointer;
 `
 
-function renderCell(cell, item, onEdit, loading) {
+function renderCell({cell, item, onEdit, loading} : RenderCellProps) {
   if(cell.type != null && cell.type === 'edit') {
     return (
-      <EditContainer onClick={loading ? undefined : () => onEdit(item)}>
+      <EditContainer onClick={loading ? undefined : (onEdit ? () => onEdit(item) : undefined)}>
         <Edit size={20} />
       </EditContainer>
     )
@@ -84,15 +91,15 @@ function renderCell(cell, item, onEdit, loading) {
 
 const Table : FC<TableProps> = ({ config, list : dataList, actions: Actions, onDelete, loading, onEdit }) => {
   const list = loading ? [{}, {}, {}, {}] : dataList
-  const [selectedMap, setSelected] = useState({})
+  const [selectedMap, setSelected] = useState<{[key: string]: boolean}>({})
 
-  const handleChangeValue = (id, value) => {
+  const handleChangeValue = (id: number, value: boolean) => {
     setSelected(prevState => ({...prevState, [id]: value}))
   }
 
-  const handlePageChange = ({selected}) => {
+  const handlePageChange = ({selected} : {selected: number}) => {
     console.log('page', selected)
-    setSelected(prevState => ({}))
+    setSelected({})
   }
 
   const selected = Object.getOwnPropertyNames(selectedMap)
@@ -100,7 +107,7 @@ const Table : FC<TableProps> = ({ config, list : dataList, actions: Actions, onD
     .map(key => key)
 
   return (
-    <Container padding={20}>
+    <Container>
       {selected.length === 0 && (
       <Meta>
         <div>Search...</div>
@@ -134,7 +141,7 @@ const Table : FC<TableProps> = ({ config, list : dataList, actions: Actions, onD
                 </Cell>
                 {config.map(cell => (
                   <Cell key={cell.key}>
-                    {renderCell(cell, item, onEdit, loading)}
+                    {renderCell({cell, item, onEdit, loading})}
                   </Cell>
                 ))}
               </Row>

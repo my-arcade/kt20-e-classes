@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import DashboardOverview from './components/DashboardOverview.component';
-import DashboardAssessments from './components/DashboardAssesments.component';
+import DashboardAssessments from './components/DashboardAssessments.component';
 import DashboardCourses from './components/DashboardCourses.component';
 import DashboardLearningPaths from './components/DashboardLearningPaths.component';
 

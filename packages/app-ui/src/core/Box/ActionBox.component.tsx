@@ -25,10 +25,10 @@ const ActionIconContainer = styled.div`
 `
 
 export type ActionBoxProps = BoxProps & {
-  title: string,
+  title?: string,
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void,
   action?: 'plus' | 'dots' | 'custom',
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const ActionBox : FC<ActionBoxProps> = ({title, onClick, children, action, ...props}) => (

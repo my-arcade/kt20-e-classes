@@ -5,38 +5,36 @@ import { AxiosResponse } from 'axios'
 type FetcherTypes = {
   fetcher: (api: any) => Promise<any>,
   onSuccess?: (response: AxiosResponse<any>) => void,
-  onError?: (err : Error) => void
+  onError?: (err : Error) => void,
+  onStateChange?: (state : ApiState) => void
 }
 
 const defaultFetchConfig : FetcherTypes = {
   fetcher: () => Promise.reject(),
   onSuccess: () => {},
-  onError: () => {}
+  onError: () => {},
+  onStateChange: () => {}
 }
 
 const ApiStore = types
   .model('ApiStore', {
-    state: types.optional(types.enumeration<ApiState>(Object.values(ApiState)), ApiState.INITIAL),
-    error: types.maybeNull(types.string)
   })
-  .views(self => ({
-    get hasError() {
-      return !!self.error
-    },
+  .views(() => ({
     get api() {
       throw new Error('Api not defined in views!')
     }
   }))
   .actions(self => ({
     fetch: flow(function * (config : FetcherTypes = defaultFetchConfig) : Generator<Promise<any>, void, any> {
-      const {fetcher, onSuccess, onError} = config
-      self.state = ApiState.LOADING
+      const {fetcher, onSuccess, onError, onStateChange} = config
+      onStateChange(ApiState.LOADING)
       try {
         const { api } = self
         const response = yield fetcher(api)
         onSuccess(response)
+        onStateChange(ApiState.LOADED)
       } catch(err) {
-        self.state = ApiState.ERROR
+        onStateChange(ApiState.ERROR)
         if(!err.response || err.response.status == null) {
           throw new Error(err);
         } else {
